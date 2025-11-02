@@ -1,2 +1,48 @@
 # grant-proposal
 A demo project in Godot 3D for the SSE Awards in Engineering Education Innovation
+
+
+**How to use this repo:**
+
+**Installation: Debian/Ubuntu**
+1. Create a Github account
+2. ```sudo apt update && sudo apt install git ssh``` (ensures git and ssh are installed)
+3. ```ssh-keygen -t ed25519 -C "your_email@example.com"``` (replace with your credentials used to create github account)
+4. ```cat .ssh/id_ed25519.pub``` (copy this output)
+5. Paste the output in step 4 into the "Key" section of this form: https://github.com/settings/ssh/new
+6. Click "Add SSH Key" (fill in the title with bajaSshKey), this should succeed without errors
+7. ```ssh-add .ssh/id_ed25519``` (makes the key you generated in step 3 availible to ssh)
+8. Check the connection to github with ```ssh -T git@github.com``` (you should see your username in the output)
+9. Change to a directory where you want the baja code stored
+10. ```git clone https://github.com/meyerAurelius/UCBajaElectrical.git``` (clones the repo)
+11. ```git remote set-url origin git@github.com:meyerAurelius/UCBajaElectrical.git``` (sets to origin to our repo for when code is pushed).
+12. Enjoy!
+
+**Installation: Windows**
+1. Download and install the 64 bit standalone version of git bash (https://git-scm.com/downloads/win)
+2. Open git bash cli
+3. ```ssh-keygen -t ed25519 -C "your_email@example.com"```
+4. ```cat .ssh/id_ed25519.pub```
+5. Paste the output in step 4 into the "Key" section of this form: https://github.com/settings/ssh/new
+6. Click "Add SSH Key" (fill in the title with bajaSshKey), this should succeed without errors
+7. Type in git bash cli: ```eval "$(ssh-agent -s)"``` (ensures ssh-add is running)
+7. ```ssh-add .ssh/id_ed25519``` (should return without errors)
+8. Check the connection to github with ```ssh -T git@github.com``` (you should see your username in the output)
+9. Change to a directory where you want the baja code stored
+10. ```git clone https://github.com/meyerAurelius/UCBajaElectrical.git``` (clones the repo)
+11. ```git remote set-url origin git@github.com:meyerAurelius/UCBajaElectrical.git``` (sets to origin to our repo for when code is pushed).
+12. Start working on your code!
+
+
+**How to sync local code with code on github:**
+
+1.```git pull```
+
+
+**How to upload your work to git:**
+1. Navigate to directory containing repo.
+2. ```git add -A``` (adds all files to commit). 
+    If you only want to add certain files to your commit, run ```git add filename``` instead
+3. ```git commit -am "Label your commit withing these quotes"``` (creates a commit)
+4. ```git push``` (pushes your commit to github)
+
