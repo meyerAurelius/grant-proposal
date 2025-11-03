@@ -31,7 +31,7 @@ fov = 80.0
 far = 100.0
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20381427, 0.1433028, -0.16935647)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7973523, 0.1433028, -0.16935647)
 gi_mode = 2
 
 [node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment"]
