@@ -1,4 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://ufcpynseunu0"]
+[gd_scene load_steps=34 format=3 uid="uid://ufcpynseunu0"]
+
+[ext_resource type="ArrayMesh" uid="uid://dpbqksau2xms5" path="res://building2/building.obj" id="1_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://dp0oq0c4dd62y" path="res://building2/texteur/store.png" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://bpq50fxdx38bx" path="res://building2/texteur/brack.jpg" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://bic0a7pvf4vfk" path="res://building2/texteur/window2.png" id="3_4c57u"]
+[ext_resource type="Texture2D" uid="uid://csjpjal2qcjvu" path="res://building2/texteur/window3.png" id="4_efxa6"]
+[ext_resource type="Texture2D" uid="uid://rvh6skkjjmrl" path="res://building2/texteur/w2.png" id="6_dg77c"]
+[ext_resource type="Texture2D" uid="uid://dshlrgc3wwnay" path="res://building2/texteur/wf.jpg" id="7_ycdy4"]
+[ext_resource type="Texture2D" uid="uid://c774i6k56s5lw" path="res://building2/texteur/top.jpg" id="8_w48qg"]
+[ext_resource type="Texture2D" uid="uid://boykjdpmyl8ta" path="res://building2/texteur/iron.jpg" id="9_vivmo"]
+[ext_resource type="Texture2D" uid="uid://dq55gkf83x6ib" path="res://building2/texteur/door.png" id="10_2cqfq"]
+[ext_resource type="Texture2D" uid="uid://cabq1ctfmtj3s" path="res://building2/candy-sprinkle-texture-background-donut-600nw-2406733987.webp" id="11_efxa6"]
 
 [sub_resource type="Environment" id="Environment_7dm0k"]
 
@@ -6,7 +18,91 @@
 
 [sub_resource type="Compositor" id="Compositor_0xm2m"]
 
-[sub_resource type="Environment" id="Environment_ig7tw"]
+[sub_resource type="Animation" id="Animation_074og"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/Camera3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 5.7534814, 0.030122757, 2.9720306)
+
+[sub_resource type="Animation" id="Animation_yaehf"]
+resource_name = "camera_demo"
+length = 3.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/Camera3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0.033333335, 1, 8.6015835, 4.875707, 7.1103, 2.0333333, 1, 9.071641, 3.166511, -4.070669)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/Camera3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.116214275, 0.5243003, 0.038264163, 0.8426977, 2.0666666, 1, 0, 0.8697922, 0, 0.49341816)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cegan"]
+_data = {
+&"RESET": SubResource("Animation_074og"),
+&"camera_demo": SubResource("Animation_yaehf")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
+albedo_texture = ExtResource("2_0xm2m")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_82xsv"]
+albedo_texture = ExtResource("3_4c57u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_getpj"]
+albedo_texture = ExtResource("4_efxa6")
+emission_enabled = true
+backlight_enabled = true
+backlight = Color(1, 1, 1, 1)
+uv2_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ryguw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d13ii"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1u8w0"]
+albedo_texture = ExtResource("2_h2yge")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0odxb"]
+albedo_texture = ExtResource("6_dg77c")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lswn8"]
+albedo_texture = ExtResource("7_ycdy4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6jrf"]
+albedo_texture = ExtResource("8_w48qg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xuqvo"]
+albedo_texture = ExtResource("9_vivmo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qsp4k"]
+albedo_texture = ExtResource("10_2cqfq")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4c57u"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_efxa6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_efxa6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dg77c"]
+albedo_texture = ExtResource("11_efxa6")
+
+[sub_resource type="TorusMesh" id="TorusMesh_4c57u"]
+lightmap_size_hint = Vector2i(34, 10)
+material = SubResource("StandardMaterial3D_dg77c")
+add_uv2 = true
+uv2_padding = 2.75
+inner_radius = 0.325
 
 [node name="Node3D" type="Node3D"]
 
@@ -15,81 +111,160 @@ environment = SubResource("Environment_7dm0k")
 camera_attributes = SubResource("CameraAttributesPractical_ig7tw")
 compositor = SubResource("Compositor_0xm2m")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(0.8573381, -0.25366458, 0.44791263, 2.593247e-08, 0.8701493, 0.49278814, -0.51475376, -0.422486, 0.74601215, 4.794522, 1.0364857, 2.1330562)
-light_color = Color(0.9993457, 0.6567895, 0.81721497, 1)
-light_energy = 0.5
-light_indirect_energy = 2.082
-shadow_enabled = true
-shadow_opacity = 0.83
-shadow_blur = 1.09
-
-[node name="Camera3D" type="Camera3D" parent="WorldEnvironment"]
-transform = Transform3D(0.87228274, 0.2409743, -0.42550468, 0, 0.8701493, 0.49278814, 0.48900187, -0.42985058, 0.7590163, -0.93112075, 1.2819834, 3.2474804)
-environment = SubResource("Environment_ig7tw")
-fov = 80.0
-far = 100.0
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7973523, 0.1433028, -0.16935647)
-gi_mode = 2
-
-[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.688158, 1.3046303, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.688158, 1.3046303, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/CSGBox3D/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.688158, 1.3046303, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/CSGBox3D/CSGBox3D/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4303813, -3.7996006, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4303813, -3.7996006, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4303813, -3.7996006, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.344522, -3.7996006, -26.237988)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.14197, -3.7996006, -0.012767792)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4303813, -3.7996006, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4303813, -3.7996006, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4303813, -3.7996006, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4303813, -3.7996006, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.382679, -3.7996006, -70.80295)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4303813, -3.7996006, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4303813, -3.7996006, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4303813, -3.7996006, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4303813, -3.7996006, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4303813, -3.7996006, 0)
-
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 0.65926707, 0.75190884, 0, -0.75190884, 0.65926707, -0.5754945, 2.3184676, 4.420488)
-light_color = Color(0.27058825, 1, 1, 1)
+transform = Transform3D(0.99157196, 0.08541274, 0.09741513, -0.12955712, 0.6537108, 0.74557173, -1.179389e-09, -0.75190884, 0.65926707, 131.10602, 103.48155, 43.687225)
+light_color = Color(0.99999994, 0.9658924, 0.9284097, 1)
 light_energy = 0.2
 shadow_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WorldEnvironment/DirectionalLight3D2"]
+libraries = {
+&"": SubResource("AnimationLibrary_cegan")
+}
+autoplay = "camera_demo"
+
+[node name="Camera3D" type="Camera3D" parent="WorldEnvironment/DirectionalLight3D2/AnimationPlayer"]
+transform = Transform3D(-0.5130771, 0, 0.8583427, 0, 1.0000001, 0, -0.8583427, 0, -0.5130771, 5.7534814, 0.030122757, 2.9720306)
+
+[node name="Building" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0202656, 0, 0)
+gi_mode = 2
+mesh = ExtResource("1_0xm2m")
+surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
+surface_material_override/1 = SubResource("StandardMaterial3D_82xsv")
+surface_material_override/2 = SubResource("StandardMaterial3D_getpj")
+surface_material_override/3 = SubResource("StandardMaterial3D_ryguw")
+surface_material_override/4 = SubResource("StandardMaterial3D_d13ii")
+surface_material_override/5 = SubResource("StandardMaterial3D_1u8w0")
+surface_material_override/6 = SubResource("StandardMaterial3D_0odxb")
+surface_material_override/7 = SubResource("StandardMaterial3D_lswn8")
+surface_material_override/8 = SubResource("StandardMaterial3D_a6jrf")
+surface_material_override/9 = SubResource("StandardMaterial3D_xuqvo")
+surface_material_override/11 = SubResource("StandardMaterial3D_qsp4k")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(53.84, 0, 0, 0, 1, 0, 0, 0, -48.449707, 5.3461857, -1.6916205, -11.092377)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_4c57u")
+
+[node name="donut2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.91244894, 0.4091906, 0, -0.4091906, 0.91244894, -2.0202656, 0, -6.1727285)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="donut2"]
+transform = Transform3D(1, 0, 0, 0, 0.92117184, -0.3891561, 0, 0.3891561, 0.92117184, 3.6593037, 1.7438247, 5.956128)
+mass = 50.0
+physics_material_override = SubResource("PhysicsMaterial_efxa6")
+constant_force = Vector3(0, -10, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="donut2/RigidBody3D"]
+physics_interpolation_mode = 1
+auto_translate_mode = 1
+transform = Transform3D(2.0389943, 0, 0, 0, 0.040506262, -0.67832124, 0, 1.012043, 0.027149301, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_efxa6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="donut2/RigidBody3D"]
+physics_interpolation_mode = 1
+mesh = SubResource("TorusMesh_4c57u")
+skeleton = NodePath("../..")
+
+[node name="donut3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3932519, 3.9745007, -4.6454277)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="donut3"]
+transform = Transform3D(1, 0, 0, 0, 0.82620645, 0.5633675, 0, -0.5633675, 0.82620645, 3.6593037, 1.743825, 5.956128)
+mass = 50.0
+physics_material_override = SubResource("PhysicsMaterial_efxa6")
+constant_force = Vector3(0, -10, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="donut3/RigidBody3D"]
+physics_interpolation_mode = 1
+auto_translate_mode = 1
+transform = Transform3D(2.0389943, 0, 0, 0, 0.040506262, -0.67832124, 0, 1.012043, 0.027149301, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_efxa6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="donut3/RigidBody3D"]
+physics_interpolation_mode = 1
+mesh = SubResource("TorusMesh_4c57u")
+skeleton = NodePath("../..")
+
+[node name="donut6" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3932519, 3.9745007, -6.841606)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="donut6"]
+transform = Transform3D(1, 0, 0, 0, 0.82620645, 0.5633675, 0, -0.5633675, 0.82620645, 3.6593037, 1.743825, 5.956128)
+mass = 50.0
+physics_material_override = SubResource("PhysicsMaterial_efxa6")
+constant_force = Vector3(0, -10, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="donut6/RigidBody3D"]
+physics_interpolation_mode = 1
+auto_translate_mode = 1
+transform = Transform3D(2.0389943, 0, 0, 0, 0.040506262, -0.67832124, 0, 1.012043, 0.027149301, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_efxa6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="donut6/RigidBody3D"]
+physics_interpolation_mode = 1
+mesh = SubResource("TorusMesh_4c57u")
+skeleton = NodePath("../..")
+
+[node name="donut4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1081176, 3.9745007, -2.395533)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="donut4"]
+transform = Transform3D(1, 0, 0, 0, 0.92117184, -0.3891561, 0, 0.3891561, 0.92117184, 3.6593037, 1.7438247, 5.956128)
+mass = 50.0
+physics_material_override = SubResource("PhysicsMaterial_efxa6")
+constant_force = Vector3(0, -10, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="donut4/RigidBody3D"]
+physics_interpolation_mode = 1
+auto_translate_mode = 1
+transform = Transform3D(2.0389943, 0, 0, 0, 0.040506262, -0.67832124, 0, 1.012043, 0.027149301, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_efxa6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="donut4/RigidBody3D"]
+physics_interpolation_mode = 1
+mesh = SubResource("TorusMesh_4c57u")
+skeleton = NodePath("../..")
+
+[node name="donut" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0202656, 0, 0)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="donut"]
+transform = Transform3D(1, 0, 0, 0, 0.92117184, -0.3891561, 0, 0.3891561, 0.92117184, 3.6593037, 1.7438247, 5.956128)
+mass = 50.0
+physics_material_override = SubResource("PhysicsMaterial_efxa6")
+constant_force = Vector3(0, -10, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="donut/RigidBody3D"]
+physics_interpolation_mode = 1
+auto_translate_mode = 1
+transform = Transform3D(2.0389943, 0, 0, 0, 0.040506262, -0.67832124, 0, 1.012043, 0.027149301, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_efxa6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="donut/RigidBody3D"]
+physics_interpolation_mode = 1
+mesh = SubResource("TorusMesh_4c57u")
+skeleton = NodePath("../../..")
+
+[node name="donut5" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9175257, 0.3976764, 0, -0.3976764, 0.9175257, -2.0202656, 0, -2.7973032)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="donut5"]
+transform = Transform3D(1, 0, 0, 0, 0.92117184, -0.3891561, 0, 0.3891561, 0.92117184, 3.6593037, 1.7438247, 5.956128)
+mass = 50.0
+physics_material_override = SubResource("PhysicsMaterial_efxa6")
+constant_force = Vector3(0, -10, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="donut5/RigidBody3D"]
+physics_interpolation_mode = 1
+auto_translate_mode = 1
+transform = Transform3D(2.0389943, 0, 0, 0, 0.040506262, -0.67832124, 0, 1.012043, 0.027149301, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_efxa6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="donut5/RigidBody3D"]
+physics_interpolation_mode = 1
+mesh = SubResource("TorusMesh_4c57u")
+skeleton = NodePath("../../..")
