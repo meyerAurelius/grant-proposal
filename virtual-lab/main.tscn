@@ -1,4 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://ufcpynseunu0"]
+[gd_scene load_steps=17 format=3 uid="uid://ufcpynseunu0"]
+
+[ext_resource type="Texture2D" uid="uid://cq13phu3n63q" path="res://Textures/ground bad texture.jpg" id="1_ig7tw"]
+[ext_resource type="Material" uid="uid://d06d1y7quuv5p" path="res://Textures/Metal type of thing.tres" id="2_0xm2m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0xm2m"]
+size = Vector3(15, 1, 15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
+albedo_texture = ExtResource("1_ig7tw")
+uv1_scale = Vector3(20, 20, 20)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1bvp3"]
+size = Vector2(15, 15)
 
 [sub_resource type="Environment" id="Environment_7dm0k"]
 
@@ -8,7 +21,40 @@
 
 [sub_resource type="Environment" id="Environment_ig7tw"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
+albedo_color = Color(0.8235294, 0.8666667, 0.6392157, 1)
+metallic = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
+metallic = 1.0
+roughness = 0.48
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mycd"]
+albedo_color = Color(0.8235294, 0.8666667, 0.77254903, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_272bh"]
+albedo_color = Color(0.8235294, 0.8666667, 0.6392157, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
+albedo_color = Color(0.8235294, 0.8666667, 0.93333334, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kek77"]
+albedo_color = Color(0.8235294, 0.8666667, 0.6392157, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7tw"]
+albedo_color = Color(0.874737, 0.874737, 0.874737, 1)
+
 [node name="Node3D" type="Node3D"]
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.48019767, 0)
+shape = SubResource("BoxShape3D_0xm2m")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+material_overlay = SubResource("StandardMaterial3D_h2yge")
+mesh = SubResource("PlaneMesh_1bvp3")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7dm0k")
@@ -16,8 +62,8 @@ camera_attributes = SubResource("CameraAttributesPractical_ig7tw")
 compositor = SubResource("Compositor_0xm2m")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(0.8573381, -0.25366458, 0.44791263, 2.593247e-08, 0.8701493, 0.49278814, -0.51475376, -0.422486, 0.74601215, 4.794522, 1.0364857, 2.1330562)
-light_color = Color(0.9993457, 0.6567895, 0.81721497, 1)
+transform = Transform3D(0.8573381, -0.25366458, 0.44791263, 2.593247e-08, 0.8701493, 0.49278814, -0.51475376, -0.422486, 0.74601215, 4.794522, 2.8941364, 2.1330562)
+light_color = Color(0.9999996, 0.9305805, 0.87858754, 1)
 light_energy = 0.5
 light_indirect_energy = 2.082
 shadow_enabled = true
@@ -25,19 +71,96 @@ shadow_opacity = 0.83
 shadow_blur = 1.09
 
 [node name="Camera3D" type="Camera3D" parent="WorldEnvironment"]
-transform = Transform3D(0.87228274, 0.2409743, -0.42550468, 0, 0.8701493, 0.49278814, 0.48900187, -0.42985058, 0.7590163, -0.93112075, 1.829916, 1.5500202)
+transform = Transform3D(0.87228274, 0.2409743, -0.42550468, 0, 0.8701493, 0.49278814, 0.48900187, -0.42985058, 0.7590163, -1.2552973, 2.8874588, 2.3116405)
 environment = SubResource("Environment_ig7tw")
 fov = 80.0
 far = 100.0
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7973523, 0.1433028, -0.16935647)
+[node name="Viscometer" type="CSGBox3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.26147312, 0, 0, 0, 1, 0.120794535, 1.496918, -0.16935647)
 gi_mode = 2
+material = SubResource("StandardMaterial3D_1bvp3")
+
+[node name="Thick Support" type="CSGCylinder3D" parent="WorldEnvironment/Viscometer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08542228, 2.3661647, -0.16789067)
+radius = 0.1
+height = 4.0
+material = SubResource("StandardMaterial3D_lquwl")
+
+[node name="Thine Support" type="CSGCylinder3D" parent="WorldEnvironment/Viscometer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.030528665, 2.3661647, 0.20206726)
+radius = 0.025
+height = 4.0
+material = ExtResource("2_0xm2m")
+
+[node name="Motor Area" type="CSGCylinder3D" parent="WorldEnvironment/Viscometer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24122816, 1.2310348, 0.1186496)
+radius = 0.2
+height = 1.526
+sides = 32
+material = SubResource("StandardMaterial3D_7mycd")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="WorldEnvironment/Viscometer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25626042, 3.7674756, -0.04810947)
+radius = 0.1
+height = 1.75
+sides = 32
+material = ExtResource("2_0xm2m")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="WorldEnvironment/Viscometer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25626042, 4.3363786, -0.04810947)
+radius = 0.15
+height = 0.5
+sides = 32
+material = SubResource("StandardMaterial3D_272bh")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/Viscometer"]
+transform = Transform3D(0.31419677, 0, 0, 0, 1, 0, 0, 0, 1, -0.28913322, 0.963881, 0.012085348)
+size = Vector3(1.303772, 0.95214844, 0.5473633)
+material = SubResource("StandardMaterial3D_5vw27")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="WorldEnvironment/Viscometer/CSGBox3D"]
+transform = Transform3D(3.1827197, 0, 0, 0, 1, 0, 0, 0, 1, 0.10462487, 0.24736547, -0.06019482)
+operation = 2
+radius = 0.115
+height = 1.0
+sides = 32
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="WorldEnvironment/Viscometer/CSGBox3D"]
+transform = Transform3D(3.1827216, 0, 0, 0, 1, 0, 0, 0, 1, -0.32343245, 0.24736547, 0.15160134)
+operation = 2
+radius = 0.02
+height = 1.0
+sides = 32
+
+[node name="Top" type="CSGBox3D" parent="WorldEnvironment/Viscometer"]
+transform = Transform3D(0.31419677, 0, 0, 0, 1, 0, 0, 0, 1, -0.095922634, 4.657906, -0.0076587796)
+size = Vector3(2.1153145, 0.5, 0.58648825)
+material = SubResource("StandardMaterial3D_kek77")
+
+[node name="Lever Base" type="CSGCylinder3D" parent="WorldEnvironment/Viscometer"]
+transform = Transform3D(0.26536673, 0, 0, 0, 0.0147125935, -0.9998917, 0, 0.99989176, 0.0147125935, 0.24122816, 0.31469297, 0.38450006)
+height = 0.05
+sides = 32
+
+[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/Viscometer/Lever Base"]
+transform = Transform3D(0.99999964, 0, 0, 0, 1, -2.8871e-07, 0, 4.656613e-09, 1, 0.0064914227, -0.0044608116, -0.37090778)
+size = Vector3(0.1538086, 0.049316406, 0.9946289)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.9028181, 0.20331776, 0.69584, 0)
+size = Vector3(4.1694336, 1.5102539, 1)
+material = SubResource("StandardMaterial3D_ig7tw")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="WorldEnvironment/CSGBox3D"]
+transform = Transform3D(3.4493406, 0, 0, 0, 0, -2.3000004, 0, 1.0000001, 0, 0, -0.6366408, -0.005341053)
+operation = 2
+height = 3.563
+sides = 64
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="WorldEnvironment"]
 transform = Transform3D(0.66029006, 0.75101066, 0, -0.75101066, 0.66029006, 0, 0, 0, 1, 0, 1.4673696, 0)
+visible = false
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 0.65926707, 0.75190884, 0, -0.75190884, 0.65926707, -0.5754945, 2.3184676, 4.420488)
