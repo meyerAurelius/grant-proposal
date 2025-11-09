@@ -1,7 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://ufcpynseunu0"]
+[gd_scene load_steps=19 format=3 uid="uid://ufcpynseunu0"]
 
 [ext_resource type="Texture2D" uid="uid://cq13phu3n63q" path="res://Textures/ground bad texture.jpg" id="1_ig7tw"]
 [ext_resource type="Material" uid="uid://d06d1y7quuv5p" path="res://Textures/Metal type of thing.tres" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://Addons/quality-godot-first-person/addons/fpc/character.tscn" id="3_h2yge"]
+[ext_resource type="VoxelGIData" uid="uid://bonprwnij6yht" path="res://main.VoxelGI_data.res" id="4_1bvp3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0xm2m"]
 size = Vector3(15, 1, 15)
@@ -14,12 +16,18 @@ uv1_scale = Vector3(20, 20, 20)
 size = Vector2(15, 15)
 
 [sub_resource type="Environment" id="Environment_7dm0k"]
+fog_enabled = true
+fog_light_color = Color(0.8415262, 0.8577432, 0.882981, 1)
+fog_light_energy = 0.01
+fog_sun_scatter = 0.09
+fog_density = 0.1
+volumetric_fog_density = 0.0001
+volumetric_fog_gi_inject = 1.44
+volumetric_fog_length = 15.0
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ig7tw"]
 
 [sub_resource type="Compositor" id="Compositor_0xm2m"]
-
-[sub_resource type="Environment" id="Environment_ig7tw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
 albedo_color = Color(0.8235294, 0.8666667, 0.6392157, 1)
@@ -44,6 +52,8 @@ albedo_color = Color(0.8235294, 0.8666667, 0.6392157, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7tw"]
 albedo_color = Color(0.874737, 0.874737, 0.874737, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_1bvp3"]
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Floor" type="StaticBody3D" parent="."]
@@ -62,19 +72,13 @@ camera_attributes = SubResource("CameraAttributesPractical_ig7tw")
 compositor = SubResource("Compositor_0xm2m")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(0.8573381, -0.25366458, 0.44791263, 2.593247e-08, 0.8701493, 0.49278814, -0.51475376, -0.422486, 0.74601215, 4.794522, 2.8941364, 2.1330562)
+transform = Transform3D(0.641523, -0.7670594, 0.008249738, 0.18374681, 0.16409852, 0.96917945, -0.74477196, -0.6202351, 0.24621771, 6.766507, 18.064728, 2.0644698)
 light_color = Color(0.9999996, 0.9305805, 0.87858754, 1)
-light_energy = 0.5
-light_indirect_energy = 2.082
+light_energy = 0.8
+light_indirect_energy = 2.117
 shadow_enabled = true
 shadow_opacity = 0.83
 shadow_blur = 1.09
-
-[node name="Camera3D" type="Camera3D" parent="WorldEnvironment"]
-transform = Transform3D(0.87228274, 0.2409743, -0.42550468, 0, 0.8701493, 0.49278814, 0.48900187, -0.42985058, 0.7590163, -1.2552973, 2.8874588, 2.3116405)
-environment = SubResource("Environment_ig7tw")
-fov = 80.0
-far = 100.0
 
 [node name="Viscometer" type="CSGBox3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 0.26147312, 0, 0, 0, 1, 0.120794535, 1.496918, -0.16935647)
@@ -147,23 +151,29 @@ sides = 32
 transform = Transform3D(0.99999964, 0, 0, 0, 1, -2.8871e-07, 0, 4.656613e-09, 1, 0.0064914227, -0.0044608116, -0.37090778)
 size = Vector3(0.1538086, 0.049316406, 0.9946289)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.9028181, 0.20331776, 0.69584, 0)
-size = Vector3(4.1694336, 1.5102539, 1)
-material = SubResource("StandardMaterial3D_ig7tw")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="WorldEnvironment/CSGBox3D"]
-transform = Transform3D(3.4493406, 0, 0, 0, 0, -2.3000004, 0, 1.0000001, 0, 0, -0.6366408, -0.005341053)
-operation = 2
-height = 3.563
-sides = 64
-
 [node name="CSGBox3D3" type="CSGBox3D" parent="WorldEnvironment"]
 transform = Transform3D(0.66029006, 0.75101066, 0, -0.75101066, 0.66029006, 0, 0, 0, 1, 0, 1.4673696, 0)
 visible = false
 
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 0.65926707, 0.75190884, 0, -0.75190884, 0.65926707, -0.5754945, 2.3184676, 4.420488)
-light_color = Color(0.27058825, 1, 1, 1)
-light_energy = 0.2
-shadow_enabled = true
+[node name="Character" parent="WorldEnvironment" instance=ExtResource("3_h2yge")]
+transform = Transform3D(0.99872553, 0, -0.050470956, 0, 1, 0, 0.050470956, 0, 0.99872553, 0.20806885, 0.0598042, 4.564713)
+
+[node name="VoxelGI" type="VoxelGI" parent="WorldEnvironment"]
+data = ExtResource("4_1bvp3")
+
+[node name="Table" type="StaticBody3D" parent="."]
+
+[node name="Table Mesh" type="CSGBox3D" parent="Table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.9028181, 0.20331776, 0.69584, 0)
+size = Vector3(4.1694336, 1.5102539, 1)
+material = SubResource("StandardMaterial3D_ig7tw")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Table/Table Mesh"]
+transform = Transform3D(3.4493406, 0, 0, 0, 0, -2.3000004, 0, 0.32800755, 0, 0, -0.6366408, -0.0053410525)
+operation = 2
+height = 3.563
+sides = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Table"]
+transform = Transform3D(4.126736, 0, 0, 0, 2.9350688, 0, 0, 0, 1.9313948, 0.201365, 0, 0)
+shape = SubResource("BoxShape3D_1bvp3")
