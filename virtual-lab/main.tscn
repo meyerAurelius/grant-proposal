@@ -207,8 +207,9 @@ data = ExtResource("4_1bvp3")
 [node name="SpotLight3D2" type="SpotLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, -4.2417383, 7.48878, 0.80830735)
 light_color = Color(0.8652717, 0.9109658, 1, 1)
-light_energy = 4.778
+light_energy = 0.368
 spot_range = 12.208842
+spot_attenuation = -0.21
 spot_angle = 75.9375
 
 [node name="Building" type="Node3D" parent="."]
