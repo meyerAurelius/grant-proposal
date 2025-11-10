@@ -454,6 +454,12 @@ func _unhandled_input(event : InputEvent):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		mouseInput = event.relative
 		
+	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			_handle_raycast_interact(event)
+		else:
+			# Re-absorb cursor on click
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		
 	# Toggle debug menu
 	elif event is InputEventKey:
@@ -462,7 +468,7 @@ func _unhandled_input(event : InputEvent):
 			if event.keycode == 4194338: # F7
 				$UserInterface/DebugPanel.visible = !$UserInterface/DebugPanel.visible
 
-func _handle_raycast_interact():
+func _handle_raycast_interact(event : InputEvent = null):
 	
 	if !RAY:
 		return "Pointing at: "
@@ -472,6 +478,12 @@ func _handle_raycast_interact():
 
 		# Most 3D hittable things are CollisionObject3D (StaticBody3D, MeshInstance3D with collider, etc.)
 		if collider is Node:
+			
+			if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+				if(collider.name == "Lever"):
+					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+				
+			
 			return "Pointing at: " + String(collider.name)
 			
 		else:

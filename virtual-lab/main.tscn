@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ufcpynseunu0"]
+[gd_scene load_steps=28 format=3 uid="uid://ufcpynseunu0"]
 
 [ext_resource type="Texture2D" uid="uid://cq13phu3n63q" path="res://Textures/ground bad texture.jpg" id="1_ig7tw"]
 [ext_resource type="Material" uid="uid://d06d1y7quuv5p" path="res://Textures/Metal type of thing.tres" id="2_0xm2m"]
@@ -78,6 +78,9 @@ material = SubResource("StandardMaterial3D_4c57u")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lquwl"]
 size = Vector3(1, 6.701172, 16.093018)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efxa6"]
+albedo_texture = ExtResource("1_ig7tw")
 
 [node name="Node3D" type="Node3D"]
 
@@ -253,6 +256,7 @@ mesh = SubResource("BoxMesh_1bvp3")
 transform = Transform3D(1, 0, 0, 0, 1.3823954, 0, 0, 0, 0.66636926, 0, -0.04667008, -0.2651597)
 operation = 2
 size = Vector3(1, 0.4272461, 0.13891602)
+material = SubResource("StandardMaterial3D_efxa6")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Building/StaticBody3D2/CSGMesh3D"]
 transform = Transform3D(1, 0, 0, 0, 1.3823954, 0, 0, 0, 0.66636926, 0, -0.04667008, -0.011771558)
