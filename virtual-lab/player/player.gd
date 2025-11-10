@@ -482,6 +482,9 @@ func _handle_raycast_interact(event : InputEvent = null):
 			if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 				if(collider.name == "Lever"):
 					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+					$UserInterface/RPMSelector.visible = true
+					# now that the cursor is release we will display an rpm selection menu.
+					
 				
 			
 			return "Pointing at: " + String(collider.name)
