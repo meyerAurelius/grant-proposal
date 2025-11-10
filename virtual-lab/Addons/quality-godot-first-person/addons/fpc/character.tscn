@@ -1,9 +1,9 @@
 [gd_scene load_steps=23 format=3 uid="uid://cc1m2a1obsyn4"]
 
-[ext_resource type="Script" uid="uid://hutuis63hgev" path="res://Addons/quality-godot-first-person/addons/fpc/character.gd" id="1_0t4e8"]
-[ext_resource type="Texture2D" uid="uid://ya1c5kfbbm1" path="res://icon.svg" id="3_dfgkk"]
-[ext_resource type="Script" uid="uid://dgfl3skp075ft" path="res://Addons/quality-godot-first-person/addons/fpc/EditorModule.gd" id="3_v3ckk"]
-[ext_resource type="Script" uid="uid://u5u7xxlvmcxx" path="res://Addons/quality-godot-first-person/addons/fpc/debug.gd" id="3_x1wcc"]
+[ext_resource type="Script" uid="uid://hutuis63hgev" path="res://Addons/quality-godot-first-person/addons/fpc/character.gd" id="1_74pxd"]
+[ext_resource type="Script" uid="uid://u5u7xxlvmcxx" path="res://Addons/quality-godot-first-person/addons/fpc/debug.gd" id="2_xhlcg"]
+[ext_resource type="Texture2D" uid="uid://ya1c5kfbbm1" path="res://icon.svg" id="3_sd8wt"]
+[ext_resource type="Script" uid="uid://dgfl3skp075ft" path="res://Addons/quality-godot-first-person/addons/fpc/EditorModule.gd" id="4_edx4p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kp17n"]
 albedo_color = Color(0.909804, 0.596078, 0, 1)
@@ -160,8 +160,8 @@ tracks/0/path = NodePath("Camera:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"handle_modes": PackedInt32Array(2),
+"points": PackedFloat32Array(0, -0.0005, 0, 0.0005, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/1/type = "bezier"
@@ -171,8 +171,8 @@ tracks/1/path = NodePath("Camera:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"handle_modes": PackedInt32Array(2),
+"points": PackedFloat32Array(0, -0.0005, 0, 0.0005, 0),
 "times": PackedFloat32Array(0)
 }
 
@@ -383,7 +383,7 @@ MarginContainer/constants/margin_top = 10
 
 [node name="Character" type="CharacterBody3D" node_paths=PackedStringArray("HEAD", "CAMERA", "HEADBOB_ANIMATION", "JUMP_ANIMATION", "CROUCH_ANIMATION", "COLLISION_MESH", "RAY")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-script = ExtResource("1_0t4e8")
+script = ExtResource("1_74pxd")
 default_reticle = "res://addons/fpc/reticles/reticle_1.tscn"
 HEAD = NodePath("Head")
 CAMERA = NodePath("Head/Camera")
@@ -412,6 +412,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 [node name="Camera" type="Camera3D" parent="Head"]
 far = 80.52
 
+[node name="RayCast3D" type="RayCast3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, -1.3266407e-07, -1, 0, 3.035, -4.371139e-08, 0, 0, 0)
+debug_shape_custom_color = Color(0.37713683, 0.5712862, 1, 1)
+
 [node name="HeadbobAnimation" type="AnimationPlayer" parent="Head"]
 libraries = {
 &"": SubResource("AnimationLibrary_o0unb")
@@ -423,10 +427,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_qeg5r")
 }
 speed_scale = 4.0
-
-[node name="RayCast3D" type="RayCast3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, -1.3266407e-07, -1, 0, 3.035, -4.371139e-08, 0, 0, 0)
-debug_shape_custom_color = Color(0.37713683, 0.5712862, 1, 1)
 
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3
@@ -448,7 +448,7 @@ offset_top = 10.0
 offset_right = 453.0
 offset_bottom = 50.0
 theme = SubResource("Theme_wdf0f")
-script = ExtResource("3_x1wcc")
+script = ExtResource("2_xhlcg")
 
 [node name="MarginContainer" type="MarginContainer" parent="UserInterface/DebugPanel"]
 layout_mode = 2
@@ -463,7 +463,7 @@ offset_top = 540.0
 offset_right = 1088.0002
 offset_bottom = 668.0
 scale = Vector2(0.485, 0.485)
-texture = ExtResource("3_dfgkk")
+texture = ExtResource("3_sd8wt")
 
 [node name="CrouchCeilingDetection" type="ShapeCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -471,4 +471,4 @@ shape = SubResource("SphereShape3D_k4wwl")
 target_position = Vector3(0, 0.5, 0)
 
 [node name="EditorModule" type="Node" parent="."]
-script = ExtResource("3_v3ckk")
+script = ExtResource("4_edx4p")
