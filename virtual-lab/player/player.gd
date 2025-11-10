@@ -421,14 +421,21 @@ func play_jump_animation():
 #region Debug Menu
 
 func update_debug_menu_per_frame():
+	# We can show what the user is currently pointed at
+	$UserInterface/RaycastIndicator.text = _handle_raycast_interact()
+	
 	$UserInterface/DebugPanel.add_property("FPS", Performance.get_monitor(Performance.TIME_FPS), 0)
 	var status : String = state
 	if !is_on_floor():
 		status += " in the air"
 	$UserInterface/DebugPanel.add_property("State", status, 4)
+	
+
 
 
 func update_debug_menu_per_tick():
+	
+	
 	# Big thanks to github.com/LorenzoAncora for the concept of the improved debug values
 	current_speed = Vector3.ZERO.distance_to(get_real_velocity())
 	$UserInterface/DebugPanel.add_property("Speed", snappedf(current_speed, 0.001), 1)
@@ -447,11 +454,6 @@ func _unhandled_input(event : InputEvent):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		mouseInput = event.relative
 		
-	elif event is InputEventMouseButton \
-		and event.button_index == MOUSE_BUTTON_LEFT \
-		and event.is_pressed() \
-		and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		_handle_raycast_interact()
 		
 	# Toggle debug menu
 	elif event is InputEventKey:
@@ -461,19 +463,21 @@ func _unhandled_input(event : InputEvent):
 				$UserInterface/DebugPanel.visible = !$UserInterface/DebugPanel.visible
 
 func _handle_raycast_interact():
+	
 	if !RAY:
-		return
+		return "Pointing at: "
 
 	if RAY.is_colliding():
 		var collider = RAY.get_collider()
 
 		# Most 3D hittable things are CollisionObject3D (StaticBody3D, MeshInstance3D with collider, etc.)
 		if collider is Node:
-			print("Selected: ", collider.name)
+			return "Pointing at: " + String(collider.name)
+			
 		else:
-			print("Hit something without a Node name")
+			return "Pointing at: "
 	else:
-		print("No object selected")
+		return "Pointing at: "
 
 #endregion
 
