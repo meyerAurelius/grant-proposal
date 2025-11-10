@@ -17,6 +17,7 @@ extends CharacterBody3D
 ## The speed that the character moves at when crouching.
 @export var crouch_speed : float = 1.0
 
+
 ## How fast the character speeds up and slows down when Motion Smoothing is on.
 @export var acceleration : float = 10.0
 ## How high the player jumps.
@@ -49,6 +50,8 @@ extends CharacterBody3D
 @export var CROUCH_ANIMATION : AnimationPlayer
 ## A reference to the the player's collision shape for use in the character script.
 @export var COLLISION_MESH : CollisionShape3D
+
+@export var RAY : RayCast3D
 
 #endregion
 
@@ -448,12 +451,34 @@ func update_debug_menu_per_tick():
 func _unhandled_input(event : InputEvent):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		mouseInput = event.relative
+		
+	elif event is InputEventMouseButton \
+		and event.button_index == MOUSE_BUTTON_LEFT \
+		and event.is_pressed() \
+		and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		_handle_raycast_interact()
+		
 	# Toggle debug menu
 	elif event is InputEventKey:
 		if event.is_released():
 			# Where we're going, we don't need InputMap
 			if event.keycode == 4194338: # F7
 				$UserInterface/DebugPanel.visible = !$UserInterface/DebugPanel.visible
+
+func _handle_raycast_interact():
+	if !RAY:
+		return
+
+	if RAY.is_colliding():
+		var collider = RAY.get_collider()
+
+		# Most 3D hittable things are CollisionObject3D (StaticBody3D, MeshInstance3D with collider, etc.)
+		if collider is Node:
+			print("Selected: ", collider.name)
+		else:
+			print("Hit something without a Node name")
+	else:
+		print("No object selected")
 
 #endregion
 

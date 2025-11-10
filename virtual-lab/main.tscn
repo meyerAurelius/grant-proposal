@@ -1,11 +1,14 @@
-[gd_scene load_steps=26 format=3 uid="uid://ufcpynseunu0"]
+[gd_scene load_steps=48 format=3 uid="uid://ufcpynseunu0"]
 
 [ext_resource type="Texture2D" uid="uid://cq13phu3n63q" path="res://Textures/ground bad texture.jpg" id="1_ig7tw"]
 [ext_resource type="Material" uid="uid://d06d1y7quuv5p" path="res://Textures/Metal type of thing.tres" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://dehftjtdjmxa1" path="res://hay_bales_4k.hdr" id="2_7mycd"]
-[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://Addons/quality-godot-first-person/addons/fpc/character.tscn" id="3_h2yge"]
 [ext_resource type="VoxelGIData" uid="uid://bonprwnij6yht" path="res://main.VoxelGI_data.res" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://hutuis63hgev" path="res://Addons/quality-godot-first-person/addons/fpc/character.gd" id="5_kek77"]
 [ext_resource type="Texture2D" uid="uid://c3tjovnm7bk5j" path="res://Textures/concrete-917.jpg" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://u5u7xxlvmcxx" path="res://Addons/quality-godot-first-person/addons/fpc/debug.gd" id="6_4c57u"]
+[ext_resource type="Texture2D" uid="uid://ya1c5kfbbm1" path="res://icon.svg" id="7_efxa6"]
+[ext_resource type="Script" uid="uid://dgfl3skp075ft" path="res://Addons/quality-godot-first-person/addons/fpc/EditorModule.gd" id="8_dg77c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7tw"]
 albedo_color = Color(0.874737, 0.874737, 0.874737, 1)
@@ -21,6 +24,29 @@ uv1_scale = Vector3(20, 20, 20)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1bvp3"]
 size = Vector2(15, 15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
+albedo_color = Color(0.8235294, 0.8666667, 0.6392157, 1)
+metallic = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
+metallic = 1.0
+roughness = 0.48
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mycd"]
+albedo_color = Color(0.8235294, 0.8666667, 0.77254903, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_272bh"]
+albedo_color = Color(0.8235294, 0.8666667, 0.6392157, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
+albedo_color = Color(0.8235294, 0.8666667, 0.93333334, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kek77"]
+albedo_color = Color(0.8235294, 0.8666667, 0.6392157, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7mycd"]
+size = Vector3(1, 0.14477539, 1.3120117)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_272bh"]
 panorama = ExtResource("2_7mycd")
@@ -45,25 +71,381 @@ volumetric_fog_temporal_reprojection_amount = 0.91
 
 [sub_resource type="Compositor" id="Compositor_0xm2m"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
-albedo_color = Color(0.8235294, 0.8666667, 0.6392157, 1)
-metallic = 0.3
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kp17n"]
+albedo_color = Color(0.909804, 0.596078, 0, 1)
+clearcoat_enabled = true
+clearcoat_roughness = 0.2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
-metallic = 1.0
-roughness = 0.48
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jw1de"]
+material = SubResource("StandardMaterial3D_kp17n")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mycd"]
-albedo_color = Color(0.8235294, 0.8666667, 0.77254903, 1)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uy03j"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_272bh"]
-albedo_color = Color(0.8235294, 0.8666667, 0.6392157, 1)
+[sub_resource type="Animation" id="Animation_j8cx7"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Collision:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh:mesh:height")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Collision:shape:height")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
-albedo_color = Color(0.8235294, 0.8666667, 0.93333334, 1)
+[sub_resource type="Animation" id="Animation_5ec5e"]
+resource_name = "crouch"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1, 0), Vector3(0, 0.75, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Collision:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1, 0), Vector3(0, 0.75, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5, 0), Vector3(0, 1.12508, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh:mesh:height")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Collision:shape:height")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.5]
+}
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kek77"]
-albedo_color = Color(0.8235294, 0.8666667, 0.6392157, 1)
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5e5t5"]
+_data = {
+&"RESET": SubResource("Animation_j8cx7"),
+&"crouch": SubResource("Animation_5ec5e")
+}
+
+[sub_resource type="Animation" id="Animation_gh776"]
+resource_name = "RESET"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_8ku67"]
+resource_name = "sprint"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 1, 0, 1, 0),
+"points": PackedFloat32Array(0.06, -0.25, 0, 0.25, -0.01, 0, 0, 0, 0, 0, -0.06, -0.25, 0.01, 0.25, 0.01, 0, 0, 0, 0, 0, 0.06, -0.25, -0.01, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0.05, -0.25, 0, 0.2, -0.01, 0, -0.2, 0.000186046, 0.2, 0.000186046, 0.05, -0.2, -0.01, 0.2, -0.01, 0, -0.2, 0, 0.2, 0, 0.05, -0.2, -0.01, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2)
+}
+
+[sub_resource type="Animation" id="Animation_lrqmv"]
+resource_name = "walk"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 1, 0, 1, 0),
+"points": PackedFloat32Array(0.04, -0.25, 0, 0.25, 0, 0, 0, 0, 0, 0, -0.04, -0.25, 0, 0.25, 0, 0, 0, 0, 0, 0, 0.04, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-0.05, -0.25, 0, 0.2, 0.005, 0, -0.2, 0.000186046, 0.2, 0.000186046, -0.05, -0.2, 0.005, 0.2, 0.005, 0, -0.2, 0, 0.2, 0, -0.05, -0.2, 0.005, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o0unb"]
+_data = {
+&"RESET": SubResource("Animation_gh776"),
+&"sprint": SubResource("Animation_8ku67"),
+&"walk": SubResource("Animation_lrqmv")
+}
+
+[sub_resource type="Animation" id="Animation_fvvjq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s07ye"]
+resource_name = "jump"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.0349066, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3eyjl"]
+resource_name = "land_center"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0349066, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.1, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l1rph"]
+resource_name = "land_left"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0349066, 0, 0.0174533), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.1, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vsknp"]
+resource_name = "land_right"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0349066, 0, -0.0174533), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.1, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qeg5r"]
+_data = {
+&"RESET": SubResource("Animation_fvvjq"),
+&"jump": SubResource("Animation_s07ye"),
+&"land_center": SubResource("Animation_3eyjl"),
+&"land_left": SubResource("Animation_l1rph"),
+&"land_right": SubResource("Animation_vsknp")
+}
+
+[sub_resource type="Theme" id="Theme_wdf0f"]
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_k4wwl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4c57u"]
 albedo_texture = ExtResource("5_lquwl")
@@ -105,6 +487,83 @@ shape = SubResource("BoxShape3D_0xm2m")
 material_overlay = SubResource("StandardMaterial3D_h2yge")
 mesh = SubResource("PlaneMesh_1bvp3")
 
+[node name="Mesh" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.26147312, 0, 0, 0, 1, 0.120794535, 1.496918, -0.16935647)
+gi_mode = 2
+material = SubResource("StandardMaterial3D_1bvp3")
+
+[node name="Thick Support" type="CSGCylinder3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08542228, 2.3661647, -0.16789067)
+radius = 0.1
+height = 4.0
+material = SubResource("StandardMaterial3D_lquwl")
+
+[node name="Thine Support" type="CSGCylinder3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.030528665, 2.3661647, 0.20206726)
+radius = 0.025
+height = 4.0
+material = ExtResource("2_0xm2m")
+
+[node name="Motor Area" type="CSGCylinder3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24122816, 1.2310348, 0.1186496)
+radius = 0.2
+height = 1.526
+sides = 32
+material = SubResource("StandardMaterial3D_7mycd")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25626042, 3.7674756, -0.04810947)
+radius = 0.1
+height = 1.75
+sides = 32
+material = ExtResource("2_0xm2m")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25626042, 4.3363786, -0.04810947)
+radius = 0.15
+height = 0.5
+sides = 32
+material = SubResource("StandardMaterial3D_272bh")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Mesh"]
+transform = Transform3D(0.31419677, 0, 0, 0, 1, 0, 0, 0, 1, -0.28913322, 0.963881, 0.012085348)
+size = Vector3(1.303772, 0.95214844, 0.5473633)
+material = SubResource("StandardMaterial3D_5vw27")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Mesh/CSGBox3D"]
+transform = Transform3D(3.1827197, 0, 0, 0, 1, 0, 0, 0, 1, 0.10462487, 0.24736547, -0.06019482)
+operation = 2
+radius = 0.115
+height = 1.0
+sides = 32
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Mesh/CSGBox3D"]
+transform = Transform3D(3.1827216, 0, 0, 0, 1, 0, 0, 0, 1, -0.32343245, 0.24736547, 0.15160134)
+operation = 2
+radius = 0.02
+height = 1.0
+sides = 32
+
+[node name="Top" type="CSGBox3D" parent="Mesh"]
+transform = Transform3D(0.31419677, 0, 0, 0, 1, 0, 0, 0, 1, -0.095922634, 4.657906, -0.0076587796)
+size = Vector3(2.1153145, 0.5, 0.58648825)
+material = SubResource("StandardMaterial3D_kek77")
+
+[node name="Lever Base" type="CSGCylinder3D" parent="Mesh"]
+transform = Transform3D(0.26536673, 0, 0, 0, 0.0147125935, -0.9998917, 0, 0.99989176, 0.0147125935, 0.24122816, 0.31469297, 0.38450006)
+height = 0.05
+sides = 32
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Mesh/Lever Base"]
+transform = Transform3D(0.99999964, 0, 0, 0, 1, -2.8871e-07, 0, 4.656613e-09, 1, 0.0064914227, -0.0044608116, -0.37090778)
+size = Vector3(0.1538086, 0.049316406, 0.9946289)
+
+[node name="Lever" type="StaticBody3D" parent="Mesh/Lever Base"]
+
+[node name="Lever" type="CollisionShape3D" parent="Mesh/Lever Base/Lever"]
+transform = Transform3D(0.99999964, 0, 0, 0, 1, -1.09896064e-07, 0, 4.656613e-09, 1, 0, 0.0054932535, -0.15600538)
+shape = SubResource("BoxShape3D_7mycd")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7dm0k")
 camera_attributes = SubResource("CameraAttributesPractical_ig7tw")
@@ -119,98 +578,113 @@ shadow_enabled = true
 shadow_opacity = 0.83
 shadow_blur = 1.09
 
-[node name="Viscometer" type="CSGBox3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 0.26147312, 0, 0, 0, 1, 0.120794535, 1.496918, -0.16935647)
-gi_mode = 2
-material = SubResource("StandardMaterial3D_1bvp3")
-
-[node name="Thick Support" type="CSGCylinder3D" parent="WorldEnvironment/Viscometer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08542228, 2.3661647, -0.16789067)
-radius = 0.1
-height = 4.0
-material = SubResource("StandardMaterial3D_lquwl")
-
-[node name="Thine Support" type="CSGCylinder3D" parent="WorldEnvironment/Viscometer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.030528665, 2.3661647, 0.20206726)
-radius = 0.025
-height = 4.0
-material = ExtResource("2_0xm2m")
-
-[node name="Motor Area" type="CSGCylinder3D" parent="WorldEnvironment/Viscometer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24122816, 1.2310348, 0.1186496)
-radius = 0.2
-height = 1.526
-sides = 32
-material = SubResource("StandardMaterial3D_7mycd")
-
-[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="WorldEnvironment/Viscometer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25626042, 3.7674756, -0.04810947)
-radius = 0.1
-height = 1.75
-sides = 32
-material = ExtResource("2_0xm2m")
-
-[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="WorldEnvironment/Viscometer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25626042, 4.3363786, -0.04810947)
-radius = 0.15
-height = 0.5
-sides = 32
-material = SubResource("StandardMaterial3D_272bh")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/Viscometer"]
-transform = Transform3D(0.31419677, 0, 0, 0, 1, 0, 0, 0, 1, -0.28913322, 0.963881, 0.012085348)
-size = Vector3(1.303772, 0.95214844, 0.5473633)
-material = SubResource("StandardMaterial3D_5vw27")
-
-[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="WorldEnvironment/Viscometer/CSGBox3D"]
-transform = Transform3D(3.1827197, 0, 0, 0, 1, 0, 0, 0, 1, 0.10462487, 0.24736547, -0.06019482)
-operation = 2
-radius = 0.115
-height = 1.0
-sides = 32
-
-[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="WorldEnvironment/Viscometer/CSGBox3D"]
-transform = Transform3D(3.1827216, 0, 0, 0, 1, 0, 0, 0, 1, -0.32343245, 0.24736547, 0.15160134)
-operation = 2
-radius = 0.02
-height = 1.0
-sides = 32
-
-[node name="Top" type="CSGBox3D" parent="WorldEnvironment/Viscometer"]
-transform = Transform3D(0.31419677, 0, 0, 0, 1, 0, 0, 0, 1, -0.095922634, 4.657906, -0.0076587796)
-size = Vector3(2.1153145, 0.5, 0.58648825)
-material = SubResource("StandardMaterial3D_kek77")
-
-[node name="Lever Base" type="CSGCylinder3D" parent="WorldEnvironment/Viscometer"]
-transform = Transform3D(0.26536673, 0, 0, 0, 0.0147125935, -0.9998917, 0, 0.99989176, 0.0147125935, 0.24122816, 0.31469297, 0.38450006)
-height = 0.05
-sides = 32
-
-[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/Viscometer/Lever Base"]
-transform = Transform3D(0.99999964, 0, 0, 0, 1, -2.8871e-07, 0, 4.656613e-09, 1, 0.0064914227, -0.0044608116, -0.37090778)
-size = Vector3(0.1538086, 0.049316406, 0.9946289)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="WorldEnvironment"]
-transform = Transform3D(0.66029006, 0.75101066, 0, -0.75101066, 0.66029006, 0, 0, 0, 1, 0, 1.4673696, 0)
-visible = false
-
-[node name="Character" parent="WorldEnvironment" instance=ExtResource("3_h2yge")]
-transform = Transform3D(0.99872553, 0, -0.050470956, 0, 1, 0, 0.050470956, 0, 0.99872553, 0.20806885, 0.0598042, 4.564713)
-
 [node name="VoxelGI" type="VoxelGI" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.047912598, 4.7068176, 0.58496094)
 size = Vector3(17.505981, 10.05304, 18.830078)
 data = ExtResource("4_1bvp3")
 
-[node name="Lighting" type="Node3D" parent="."]
+[node name="Lighting" type="Node3D" parent="WorldEnvironment"]
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="Lighting"]
+[node name="SpotLight3D2" type="SpotLight3D" parent="WorldEnvironment/Lighting"]
 transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, -4.2417383, 7.48878, 0.80830735)
 light_color = Color(0.8652717, 0.9109658, 1, 1)
 light_energy = 0.368
 spot_range = 12.208842
 spot_attenuation = -0.21
 spot_angle = 75.9375
+
+[node name="Character" type="CharacterBody3D" parent="." node_paths=PackedStringArray("HEAD", "CAMERA", "HEADBOB_ANIMATION", "JUMP_ANIMATION", "CROUCH_ANIMATION", "COLLISION_MESH", "RAY")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.1760095e-07, 0, 2.6903954)
+script = ExtResource("5_kek77")
+default_reticle = "res://addons/fpc/reticles/reticle_1.tscn"
+HEAD = NodePath("Head")
+CAMERA = NodePath("Head/Camera")
+HEADBOB_ANIMATION = NodePath("Head/HeadbobAnimation")
+JUMP_ANIMATION = NodePath("Head/JumpAnimation")
+CROUCH_ANIMATION = NodePath("CrouchAnimation")
+COLLISION_MESH = NodePath("Collision")
+RAY = NodePath("Head/RayCast3D")
+
+[node name="Mesh" type="MeshInstance3D" parent="Character"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+gi_mode = 2
+mesh = SubResource("CapsuleMesh_jw1de")
+
+[node name="Collision" type="CollisionShape3D" parent="Character"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_uy03j")
+
+[node name="CrouchAnimation" type="AnimationPlayer" parent="Character"]
+libraries = {
+&"": SubResource("AnimationLibrary_5e5t5")
+}
+
+[node name="Head" type="Node3D" parent="Character"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Camera" type="Camera3D" parent="Character/Head"]
+far = 80.52
+
+[node name="HeadbobAnimation" type="AnimationPlayer" parent="Character/Head"]
+libraries = {
+&"": SubResource("AnimationLibrary_o0unb")
+}
+blend_times = [&"RESET", &"RESET", 0.5, &"RESET", &"walk", 0.5, &"walk", &"RESET", 0.5]
+
+[node name="JumpAnimation" type="AnimationPlayer" parent="Character/Head"]
+libraries = {
+&"": SubResource("AnimationLibrary_qeg5r")
+}
+speed_scale = 4.0
+
+[node name="RayCast3D" type="RayCast3D" parent="Character/Head"]
+transform = Transform3D(1, 0, 0, 0, -1.3266407e-07, -1, 0, 3.035, -4.371139e-08, 0, 0, 0)
+debug_shape_custom_color = Color(0.37713683, 0.5712862, 1, 1)
+
+[node name="UserInterface" type="Control" parent="Character"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = 4.0
+offset_right = -36.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="DebugPanel" type="PanelContainer" parent="Character/UserInterface"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 453.0
+offset_bottom = 50.0
+theme = SubResource("Theme_wdf0f")
+script = ExtResource("6_4c57u")
+
+[node name="MarginContainer" type="MarginContainer" parent="Character/UserInterface/DebugPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Character/UserInterface/DebugPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Character/UserInterface"]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 540.0
+offset_right = 1088.0002
+offset_bottom = 668.0
+scale = Vector2(0.485, 0.485)
+texture = ExtResource("7_efxa6")
+
+[node name="CrouchCeilingDetection" type="ShapeCast3D" parent="Character"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_k4wwl")
+target_position = Vector3(0, 0.5, 0)
+
+[node name="EditorModule" type="Node" parent="Character"]
+script = ExtResource("8_dg77c")
 
 [node name="Building" type="Node3D" parent="."]
 
