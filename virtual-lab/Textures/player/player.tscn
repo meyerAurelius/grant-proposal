@@ -206,7 +206,7 @@ HEADBOB_ANIMATION = NodePath("Head/HeadbobAnimation")
 JUMP_ANIMATION = NodePath("Head/JumpAnimation")
 CROUCH_ANIMATION = NodePath("CrouchAnimation")
 COLLISION_MESH = NodePath("collision")
-RAY = NodePath("Head/RayCast3D")
+RAY = NodePath("Head/Camera/RayCast3D")
 
 [node name="mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -231,7 +231,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.697587, 0)
 
 [node name="Camera" type="Camera3D" parent="Head"]
 
-[node name="RayCast3D" type="RayCast3D" parent="Head"]
+[node name="RayCast3D" type="RayCast3D" parent="Head/Camera"]
 transform = Transform3D(1.9106855e-15, 4.371139e-07, 1, 1, -4.371139e-07, 0, 4.371139e-08, 10, -4.371139e-08, 0, 0, 0)
 
 [node name="HeadbobAnimation" type="AnimationPlayer" parent="Head"]
@@ -337,3 +337,18 @@ shape = SubResource("SphereShape3D_yw30f")
 
 [node name="EditorModule" type="Node" parent="."]
 script = ExtResource("4_yw30f")
+
+[node name="LeverInterface" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Button" type="Button" parent="LeverInterface"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -119.0
+offset_bottom = 115.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 64
+text = "X"
+
+[connection signal="pressed" from="LeverInterface/Button" to="." method="_on_button_pressed"]
