@@ -133,6 +133,15 @@ var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity") 
 # Stores mouse input for rotating the camera in the physics process
 var mouseInput : Vector2 = Vector2(0,0)
 
+# Stores the Camera position before the animation to a object of interest
+var camera_posOG :Vector3
+
+# Stores the Camera rotation before the animation to a object of interest
+var camera_rotOG :Vector3
+
+# Tells the computer that it needs to fill values in between certain values
+var tween = create_tween()
+
 #endregion
 
 
@@ -482,15 +491,12 @@ func _handle_raycast_interact(event : InputEvent = null):
 			if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 				if(collider.name == "Lever"):
 					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-					var tween = create_tween()
-					var camera_posOG :Vector3
-					var camera_rotOG :Vector3
 					camera_posOG = $Head/Camera.global_position
 					camera_rotOG = $Head/Camera.global_rotation
+					tween = create_tween()
 					tween.tween_property($Head/Camera, "global_position", Vector3(0.336,1.903,1.07), 1.5)
 					tween.tween_property($Head/Camera, "global_rotation", Vector3(0,0,0), 0.5)
-					#tween.tween_property($Head/Camera, "global_position", camera_posOG, 1.5)
-					#tween.tween_property($Head/Camera, "global_rotation", camera_rotOG, 1.5)
+					$LeverInterface.visible = true
 					$UserInterface/RPMSelector.visible = true
 					# now that the cursor is release we will display an rpm selection menu.
 					
@@ -527,3 +533,11 @@ func handle_pausing():
 				#get_tree().paused = false
 
 #endregion
+
+#region UI Functions 
+func _on_button_pressed() -> void:
+	$LeverInterface.visible = false
+	$UserInterface/RPMSelector.visible = false
+	tween = create_tween()
+	tween.tween_property($Head/Camera, "global_position", camera_posOG, 1.5)
+	tween.tween_property($Head/Camera, "global_rotation", camera_rotOG, 0.25)
