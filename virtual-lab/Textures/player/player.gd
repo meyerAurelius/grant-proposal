@@ -549,6 +549,7 @@ func handle_pausing():
 #region UI Functions 
 func _on_button_pressed() -> void:
 	$LeverInterface.visible = false
+	$'../CanvasLayer/RPMSelector'.visible = false
 	tween = create_tween()
 	tween.tween_property($Head/Camera, "global_position", camera_posOG, 1.5)
 	tween.tween_property($Head/Camera, "global_rotation", camera_rotOG, 0.25)
