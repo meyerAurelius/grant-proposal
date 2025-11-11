@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dehftjtdjmxa1" path="res://hay_bales_4k.hdr" id="2_7mycd"]
 [ext_resource type="VoxelGIData" uid="uid://bonprwnij6yht" path="res://main.VoxelGI_data.res" id="4_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://c3tjovnm7bk5j" path="res://Textures/concrete-917.jpg" id="5_lquwl"]
-[ext_resource type="PackedScene" uid="uid://5kl1tktw2ngd" path="res://Textures/player/player_REMOTE_2000.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://5kl1tktw2ngd" path="res://Textures/player/player.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://d3shjhhbuhbt5" path="res://StopWatch/UserInterface.tscn" id="7_272bh"]
 [ext_resource type="Script" uid="uid://csu27gdyci43k" path="res://Textures/player/rpm_selector.gd" id="8_dg77c"]
 [ext_resource type="Texture2D" uid="uid://dbr0of3vvh6fe" path="res://control_menu/control-slider.png" id="9_ycdy4"]
@@ -342,7 +342,7 @@ transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.18179867,
 layout_direction = 1
 mouse_filter = 2
 
-[node name="RPMSelector" type="Control" parent="CanvasLayer"]
+[node name="RPMSelector" type="Control" parent="."]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -350,7 +350,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("8_dg77c")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/RPMSelector"]
+[node name="TextureRect" type="TextureRect" parent="RPMSelector"]
 layout_mode = 0
 offset_left = 1135.2325
 offset_top = 294.0
@@ -358,7 +358,7 @@ offset_right = 1858.6279
 offset_bottom = 596.0
 texture = ExtResource("9_ycdy4")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/RPMSelector/TextureRect"]
+[node name="RichTextLabel" type="RichTextLabel" parent="RPMSelector/TextureRect"]
 layout_mode = 0
 offset_left = 60.767456
 offset_top = 195.0
@@ -367,11 +367,11 @@ offset_bottom = 282.0
 theme_override_font_sizes/normal_font_size = 41
 text = "0     100       200      300       600"
 
-[node name="ControlArrow" type="Sprite2D" parent="CanvasLayer/RPMSelector/TextureRect"]
+[node name="ControlArrow" type="Sprite2D" parent="RPMSelector/TextureRect"]
 position = Vector2(70, 93)
 texture = ExtResource("10_w48qg")
 
-[node name="RPM0" type="Button" parent="CanvasLayer/RPMSelector"]
+[node name="RPM0" type="Button" parent="RPMSelector"]
 layout_mode = 0
 offset_left = 1163.0
 offset_top = 473.0
@@ -384,7 +384,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_82xsv")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_getpj")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ryguw")
 
-[node name="RPM100" type="Button" parent="CanvasLayer/RPMSelector"]
+[node name="RPM100" type="Button" parent="RPMSelector"]
 layout_mode = 0
 offset_left = 1263.0
 offset_top = 473.0
@@ -397,7 +397,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_82xsv")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_getpj")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ryguw")
 
-[node name="RPM200" type="Button" parent="CanvasLayer/RPMSelector"]
+[node name="RPM200" type="Button" parent="RPMSelector"]
 layout_mode = 0
 offset_left = 1401.0
 offset_top = 471.0
@@ -410,7 +410,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_82xsv")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_getpj")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ryguw")
 
-[node name="RPM300" type="Button" parent="CanvasLayer/RPMSelector"]
+[node name="RPM300" type="Button" parent="RPMSelector"]
 layout_mode = 0
 offset_left = 1537.0
 offset_top = 474.0
@@ -423,7 +423,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_82xsv")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_getpj")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ryguw")
 
-[node name="RPM600" type="Button" parent="CanvasLayer/RPMSelector"]
+[node name="RPM600" type="Button" parent="RPMSelector"]
 layout_mode = 0
 offset_left = 1686.0
 offset_top = 476.0
@@ -436,7 +436,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_82xsv")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_getpj")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ryguw")
 
-[node name="RPMLabel" type="TextureRect" parent="CanvasLayer/RPMSelector"]
+[node name="RPMLabel" type="TextureRect" parent="RPMSelector"]
 layout_mode = 0
 offset_left = 1168.9999
 offset_top = 86.0
@@ -445,7 +445,7 @@ offset_bottom = 410.5614
 scale = Vector2(0.57, 0.57)
 texture = ExtResource("11_vivmo")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/RPMSelector/RPMLabel"]
+[node name="RichTextLabel" type="RichTextLabel" parent="RPMSelector/RPMLabel"]
 layout_mode = 0
 offset_left = 108.77215
 offset_top = 73.684204
@@ -455,7 +455,7 @@ theme_override_font_sizes/normal_font_size = 106
 text = "RPM Select
 "
 
-[node name="CloseButton" type="TextureRect" parent="CanvasLayer/RPMSelector"]
+[node name="CloseButton" type="TextureRect" parent="RPMSelector"]
 layout_mode = 0
 offset_left = 1661.0
 offset_top = 98.0
@@ -463,7 +463,7 @@ offset_right = 1821.0
 offset_bottom = 258.0
 texture = ExtResource("12_2cqfq")
 
-[node name="Button" type="Button" parent="CanvasLayer/RPMSelector/CloseButton"]
+[node name="Button" type="Button" parent="RPMSelector/CloseButton"]
 layout_mode = 0
 offset_left = -4.0
 offset_right = 165.0
@@ -474,9 +474,9 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_0odxb")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_lswn8")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_a6jrf")
 
-[connection signal="pressed" from="CanvasLayer/RPMSelector/RPM0" to="CanvasLayer/RPMSelector" method="_on_rpm_0_pressed"]
-[connection signal="pressed" from="CanvasLayer/RPMSelector/RPM100" to="CanvasLayer/RPMSelector" method="_on_rpm_100_pressed"]
-[connection signal="pressed" from="CanvasLayer/RPMSelector/RPM200" to="CanvasLayer/RPMSelector" method="_on_rpm_200_pressed"]
-[connection signal="pressed" from="CanvasLayer/RPMSelector/RPM300" to="CanvasLayer/RPMSelector" method="_on_rpm_300_pressed"]
-[connection signal="pressed" from="CanvasLayer/RPMSelector/RPM600" to="CanvasLayer/RPMSelector" method="_on_rpm_600_pressed"]
-[connection signal="pressed" from="CanvasLayer/RPMSelector/CloseButton/Button" to="CanvasLayer/RPMSelector" method="_on_button_pressed"]
+[connection signal="pressed" from="RPMSelector/RPM0" to="RPMSelector" method="_on_rpm_0_pressed"]
+[connection signal="pressed" from="RPMSelector/RPM100" to="RPMSelector" method="_on_rpm_100_pressed"]
+[connection signal="pressed" from="RPMSelector/RPM200" to="RPMSelector" method="_on_rpm_200_pressed"]
+[connection signal="pressed" from="RPMSelector/RPM300" to="RPMSelector" method="_on_rpm_300_pressed"]
+[connection signal="pressed" from="RPMSelector/RPM600" to="RPMSelector" method="_on_rpm_600_pressed"]
+[connection signal="pressed" from="RPMSelector/CloseButton/Button" to="RPMSelector" method="_on_button_pressed"]

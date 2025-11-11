@@ -491,13 +491,29 @@ func _handle_raycast_interact(event : InputEvent = null):
 			if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 				if(collider.name == "Lever"):
 					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD:virtual-lab/Textures/player/player.gd
+					$'../RPMSelector'.visible = true
+=======
+					var tween = create_tween()
+					var camera_posOG :Vector3
+					var camera_rotOG :Vector3
+>>>>>>> parent of b46c65e (manually fixed some of the merge conflicts)
 					camera_posOG = $Head/Camera.global_position
 					camera_rotOG = $Head/Camera.global_rotation
 					tween = create_tween()
 					tween.tween_property($Head/Camera, "global_position", Vector3(0.336,1.903,1.07), 1.5)
 					tween.tween_property($Head/Camera, "global_rotation", Vector3(0,0,0), 0.5)
+<<<<<<< HEAD
 					$LeverInterface.visible = true
 					$UserInterface/RPMSelector.visible = true
+=======
+					#tween.tween_property($Head/Camera, "global_position", camera_posOG, 1.5)
+					#tween.tween_property($Head/Camera, "global_rotation", camera_rotOG, 1.5)
+					$UserInterface/RPMSelector.visible = true
+>>>>>>> dev-fadi:virtual-lab/player/player.gd
+>>>>>>> parent of b46c65e (manually fixed some of the merge conflicts)
 					# now that the cursor is release we will display an rpm selection menu.
 					
 				
