@@ -288,18 +288,3 @@ shape = SubResource("SphereShape3D_yw30f")
 
 [node name="EditorModule" type="Node" parent="."]
 script = ExtResource("4_yw30f")
-
-[node name="LeverInterface" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="Button" type="Button" parent="LeverInterface"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -119.0
-offset_bottom = 115.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 64
-text = "X"
-
-[connection signal="pressed" from="LeverInterface/Button" to="." method="_on_button_pressed"]

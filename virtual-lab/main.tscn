@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ufcpynseunu0"]
+[gd_scene load_steps=34 format=3 uid="uid://ufcpynseunu0"]
 
 [ext_resource type="Texture2D" uid="uid://cq13phu3n63q" path="res://Textures/ground bad texture.jpg" id="1_ig7tw"]
 [ext_resource type="Material" uid="uid://d06d1y7quuv5p" path="res://Textures/Metal type of thing.tres" id="2_0xm2m"]
@@ -43,6 +43,58 @@ albedo_color = Color(0.8235294, 0.8666667, 0.93333334, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kek77"]
 albedo_color = Color(0.8235294, 0.8666667, 0.6392157, 1)
+
+[sub_resource type="Animation" id="Animation_5vw27"]
+resource_name = "LeverLow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.9773844, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kek77"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4c57u"]
+resource_name = "LeverHigh"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.9773844, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_efxa6"]
+_data = {
+&"LeverHigh": SubResource("Animation_4c57u"),
+&"LeverLow": SubResource("Animation_5vw27"),
+&"RESET": SubResource("Animation_kek77")
+}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7mycd"]
 size = Vector3(1, 0.14477539, 1.3120117)
@@ -180,8 +232,14 @@ transform = Transform3D(0.26536673, 0, 0, 0, 0.0147125935, -0.9998917, 0, 0.9998
 height = 0.05
 sides = 32
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Mesh/Lever Base"]
-transform = Transform3D(0.99999964, 0, 0, 0, 1, -2.8871e-07, 0, 4.656613e-09, 1, 0.0064914227, -0.0044608116, -0.37090778)
+[node name="LeverAnimation" type="AnimationPlayer" parent="Mesh/Lever Base"]
+root_node = NodePath("../LeverStick")
+libraries = {
+&"": SubResource("AnimationLibrary_efxa6")
+}
+
+[node name="LeverStick" type="CSGBox3D" parent="Mesh/Lever Base"]
+transform = Transform3D(0.99999964, 0, 0, 0, 1, 0, 0, 0, 1, 0.0064914227, -0.0044608116, -0.37090778)
 size = Vector3(0.1538086, 0.049316406, 0.9946289)
 
 [node name="Lever" type="StaticBody3D" parent="Mesh/Lever Base"]
@@ -317,4 +375,13 @@ layout_direction = 1
 mouse_filter = 2
 
 [node name="RPMSelector" parent="CanvasLayer" instance=ExtResource("8_5vw27")]
+visible = false
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer2" instance=ExtResource("7_272bh")]
+layout_direction = 1
+mouse_filter = 2
+
+[node name="RPMSelector" parent="CanvasLayer2" instance=ExtResource("8_5vw27")]
 visible = false
