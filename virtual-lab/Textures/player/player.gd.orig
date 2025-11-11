@@ -482,9 +482,9 @@ func _handle_raycast_interact(event : InputEvent = null):
 			if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 				if(collider.name == "Lever"):
 					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-
-					$'../CanvasLayer/RPMSelector'.visible = true
-
+<<<<<<< HEAD:virtual-lab/Textures/player/player.gd
+					$'../RPMSelector'.visible = true
+=======
 					var tween = create_tween()
 					var camera_posOG :Vector3
 					var camera_rotOG :Vector3
@@ -494,8 +494,8 @@ func _handle_raycast_interact(event : InputEvent = null):
 					tween.tween_property($Head/Camera, "global_rotation", Vector3(0,0,0), 0.5)
 					#tween.tween_property($Head/Camera, "global_position", camera_posOG, 1.5)
 					#tween.tween_property($Head/Camera, "global_rotation", camera_rotOG, 1.5)
-					$'../CanvasLayer/RPMSelector'.visible = true
-
+					$UserInterface/RPMSelector.visible = true
+>>>>>>> dev-fadi:virtual-lab/player/player.gd
 					# now that the cursor is release we will display an rpm selection menu.
 					
 				

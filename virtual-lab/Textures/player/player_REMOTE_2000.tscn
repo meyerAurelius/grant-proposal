@@ -1,0 +1,290 @@
+[gd_scene load_steps=24 format=3 uid="uid://5kl1tktw2ngd"]
+
+[ext_resource type="Script" uid="uid://dlheppt8ey4go" path="res://Textures/player/player.gd" id="1_rkbax"]
+[ext_resource type="Script" uid="uid://siumuxsaklff" path="res://Textures/player/debug_panel.gd" id="2_g1dw6"]
+[ext_resource type="Texture2D" uid="uid://brabv63rsu1tj" path="res://Textures/crosshair.png" id="3_yw30f"]
+[ext_resource type="Script" uid="uid://cp0yqpl40nu47" path="res://Textures/player/editor_module.gd" id="4_yw30f"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kqu6x"]
+height = 4.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oul6g"]
+height = 4.0
+
+[sub_resource type="Animation" id="Animation_kb6p2"]
+resource_name = "CameraToLever"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Head/Camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.336, 1.903, 1.07)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("mesh:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Head/Camera")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(1, 1, 0.336, 1.903, 1.07)
+
+[sub_resource type="Animation" id="Animation_wodsf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("mesh:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Head/Camera")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_32hag"]
+_data = {
+&"CameraToLever": SubResource("Animation_kb6p2"),
+&"RESET": SubResource("Animation_wodsf")
+}
+
+[sub_resource type="Animation" id="Animation_rgyib"]
+resource_name = "RESET"
+length = 0.01
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 3.697587, 0)
+
+[sub_resource type="Animation" id="Animation_yw30f"]
+resource_name = "crouch"
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 2.9569004, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qjkh3"]
+_data = {
+&"RESET": SubResource("Animation_rgyib"),
+&"crouch": SubResource("Animation_yw30f")
+}
+
+[sub_resource type="Animation" id="Animation_boad6"]
+resource_name = "RESET"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 3.697587, 0)
+
+[sub_resource type="Animation" id="Animation_2ieo8"]
+resource_name = "sprint"
+
+[sub_resource type="Animation" id="Animation_qjkh3"]
+resource_name = "walk"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g6k8r"]
+_data = {
+&"RESET": SubResource("Animation_boad6"),
+&"sprint": SubResource("Animation_2ieo8"),
+&"walk": SubResource("Animation_qjkh3")
+}
+
+[sub_resource type="Animation" id="Animation_g6k8r"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 3.697587, 0)
+
+[sub_resource type="Animation" id="Animation_ebec5"]
+resource_name = "jump"
+
+[sub_resource type="Animation" id="Animation_yllr7"]
+resource_name = "land_center"
+
+[sub_resource type="Animation" id="Animation_hg6s5"]
+resource_name = "land_left"
+
+[sub_resource type="Animation" id="Animation_8t03j"]
+resource_name = "land_right"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_boad6"]
+_data = {
+&"RESET": SubResource("Animation_g6k8r"),
+&"jump": SubResource("Animation_ebec5"),
+&"land_center": SubResource("Animation_yllr7"),
+&"land_left": SubResource("Animation_hg6s5"),
+&"land_right": SubResource("Animation_8t03j")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yw30f"]
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("HEAD", "CAMERA", "HEADBOB_ANIMATION", "JUMP_ANIMATION", "CROUCH_ANIMATION", "COLLISION_MESH", "RAY")]
+script = ExtResource("1_rkbax")
+HEAD = NodePath("Head")
+CAMERA = NodePath("Head/Camera")
+HEADBOB_ANIMATION = NodePath("Head/HeadbobAnimation")
+JUMP_ANIMATION = NodePath("Head/JumpAnimation")
+CROUCH_ANIMATION = NodePath("CrouchAnimation")
+COLLISION_MESH = NodePath("collision")
+RAY = NodePath("Head/RayCast3D")
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("CapsuleMesh_kqu6x")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("CapsuleShape3D_oul6g")
+
+[node name="LookAtLever" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_32hag")
+}
+
+[node name="CrouchAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qjkh3")
+}
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.697587, 0)
+
+[node name="Camera" type="Camera3D" parent="Head"]
+
+[node name="RayCast3D" type="RayCast3D" parent="Head"]
+transform = Transform3D(1.9106855e-15, 4.371139e-07, 1, 1, -4.371139e-07, 0, 4.371139e-08, 10, -4.371139e-08, 0, 0, 0)
+
+[node name="HeadbobAnimation" type="AnimationPlayer" parent="Head"]
+libraries = {
+&"": SubResource("AnimationLibrary_g6k8r")
+}
+
+[node name="JumpAnimation" type="AnimationPlayer" parent="Head"]
+libraries = {
+&"": SubResource("AnimationLibrary_boad6")
+}
+
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="DebugPanel" type="PanelContainer" parent="UserInterface"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_g1dw6")
+
+[node name="MarginContainer" type="MarginContainer" parent="UserInterface/DebugPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/DebugPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UserInterface"]
+layout_mode = 0
+offset_left = 936.0
+offset_top = 501.0
+offset_right = 1448.0
+offset_bottom = 1013.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_yw30f")
+
+[node name="RaycastIndicator" type="RichTextLabel" parent="UserInterface"]
+layout_mode = 0
+offset_left = 555.0
+offset_top = 950.0
+offset_right = 1099.0
+offset_bottom = 1014.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 5
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/normal_font_size = 30
+scroll_active = false
+
+[node name="CrouchCeilingDetection" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5532956, 0)
+shape = SubResource("SphereShape3D_yw30f")
+
+[node name="EditorModule" type="Node" parent="."]
+script = ExtResource("4_yw30f")
