@@ -103,28 +103,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_35kn5")
 
 [node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 902.0
-offset_top = 22.0
-offset_right = 1107.0
-offset_bottom = 132.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -159.0
+offset_right = 159.0
+offset_bottom = 110.0
+grow_horizontal = 2
 theme_override_font_sizes/font_size = 80
 text = "00:00:00"
-
-[node name="TOGGLE" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.008
-anchor_bottom = 0.032
-offset_left = 1644.0
-offset_top = 11.0
-offset_right = 1731.64
-offset_bottom = 7.4399986
-scale = Vector2(2.5, 2.5)
-text = "TOGGLE O/F"
 
 [node name="Clock" type="Sprite2D" parent="."]
 position = Vector2(1699, 866)
@@ -152,5 +145,3 @@ libraries = {
 libraries = {
 &"": SubResource("AnimationLibrary_vmnjc")
 }
-
-[connection signal="pressed" from="TOGGLE" to="." method="_on_toggle_pressed"]

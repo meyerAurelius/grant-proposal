@@ -482,6 +482,15 @@ func _handle_raycast_interact(event : InputEvent = null):
 			if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 				if(collider.name == "Lever"):
 					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+					var tween = create_tween()
+					var camera_posOG :Vector3
+					var camera_rotOG :Vector3
+					camera_posOG = $Head/Camera.global_position
+					camera_rotOG = $Head/Camera.global_rotation
+					tween.tween_property($Head/Camera, "global_position", Vector3(0.336,1.903,1.07), 1.5)
+					tween.tween_property($Head/Camera, "global_rotation", Vector3(0,0,0), 0.5)
+					#tween.tween_property($Head/Camera, "global_position", camera_posOG, 1.5)
+					#tween.tween_property($Head/Camera, "global_rotation", camera_rotOG, 1.5)
 					$UserInterface/RPMSelector.visible = true
 					# now that the cursor is release we will display an rpm selection menu.
 					
