@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ufcpynseunu0"]
+[gd_scene load_steps=29 format=3 uid="uid://ufcpynseunu0"]
 
 [ext_resource type="Texture2D" uid="uid://cq13phu3n63q" path="res://Textures/ground bad texture.jpg" id="1_ig7tw"]
 [ext_resource type="Material" uid="uid://d06d1y7quuv5p" path="res://Textures/Metal type of thing.tres" id="2_0xm2m"]
@@ -6,6 +6,7 @@
 [ext_resource type="VoxelGIData" uid="uid://bonprwnij6yht" path="res://main.VoxelGI_data.res" id="4_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://c3tjovnm7bk5j" path="res://Textures/concrete-917.jpg" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://5kl1tktw2ngd" path="res://player/player.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://d3shjhhbuhbt5" path="res://StopWatch/UserInterface.tscn" id="7_272bh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7tw"]
 albedo_color = Color(0.874737, 0.874737, 0.874737, 1)
@@ -307,3 +308,6 @@ shape = SubResource("BoxShape3D_lquwl")
 
 [node name="Player" parent="." instance=ExtResource("6_7mycd")]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.18179867, 0, 3.492507)
+
+[node name="Control" parent="." instance=ExtResource("7_272bh")]
+mouse_filter = 2
