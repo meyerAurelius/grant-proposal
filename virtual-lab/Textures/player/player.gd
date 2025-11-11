@@ -491,13 +491,25 @@ func _handle_raycast_interact(event : InputEvent = null):
 			if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 				if(collider.name == "Lever"):
 					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+					$'../CanvasLayer/RPMSelector'.visible = true
+
+					var tween = create_tween()
+
 					camera_posOG = $Head/Camera.global_position
+					print(camera_posOG)
 					camera_rotOG = $Head/Camera.global_rotation
 					tween = create_tween()
 					tween.tween_property($Head/Camera, "global_position", Vector3(0.336,1.903,1.07), 1.5)
 					tween.tween_property($Head/Camera, "global_rotation", Vector3(0,0,0), 0.5)
+
 					$LeverInterface.visible = true
-					$UserInterface/RPMSelector.visible = true
+					$'../CanvasLayer/RPMSelector'.visible = true
+
+					#tween.tween_property($Head/Camera, "global_position", camera_posOG, 1.5)
+					#tween.tween_property($Head/Camera, "global_rotation", camera_rotOG, 1.5)
+
+
 					# now that the cursor is release we will display an rpm selection menu.
 					
 				
@@ -537,7 +549,6 @@ func handle_pausing():
 #region UI Functions 
 func _on_button_pressed() -> void:
 	$LeverInterface.visible = false
-	$UserInterface/RPMSelector.visible = false
 	tween = create_tween()
 	tween.tween_property($Head/Camera, "global_position", camera_posOG, 1.5)
 	tween.tween_property($Head/Camera, "global_rotation", camera_rotOG, 0.25)
