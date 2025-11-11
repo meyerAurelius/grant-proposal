@@ -5,34 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://20k3486a6ss6" path="res://StopWatch/Clock Pressed.png" id="3_ixs7t"]
 [ext_resource type="Texture2D" uid="uid://b8k8b25m8fsx8" path="res://StopWatch/moving ting.png" id="4_0ayub"]
 
-[sub_resource type="Animation" id="Animation_ya7af"]
-resource_name = "pressClock"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Clock:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ClockPressed:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="Animation" id="Animation_l8a55"]
 length = 0.001
 tracks/0/type = "value"
@@ -72,6 +44,34 @@ tracks/2/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_ya7af"]
+resource_name = "pressClock"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Clock:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ClockPressed:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_vbwo5"]
 resource_name = "rotatehand"
 length = 12.0
@@ -86,7 +86,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.03333336, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.5235987755982988, 1.0471975511965976, 1.5707963267948966, 2.0943951023931953, 2.6179938779914944, 3.141592653589793, 3.6651914291880923, 4.1887902047863905, 4.71238898038469, 5.235987755982989, 6.265732014659643, 0.0]
+"values": [0.0, 0.5235987755982988, 1.0471975511965976, 1.5707963267948966, 2.0943951023931953, 2.6179938779914944, 3.141592653589793, 3.665191429188092, 4.1887902047863905, 4.71238898038469, 5.235987755982989, 6.265732014659643, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vmnjc"]
