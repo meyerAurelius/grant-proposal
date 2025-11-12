@@ -500,7 +500,7 @@ func _handle_raycast_interact(event : InputEvent = null):
 
 					$'../CanvasLayer/RPMSelector'.visible = true
 
-					var tween = create_tween()
+					tween = create_tween()
 					enter_stop_state()
 					camera_posOG = $Head/Camera.global_position
 					print(camera_posOG)
@@ -508,10 +508,21 @@ func _handle_raycast_interact(event : InputEvent = null):
 					tween = create_tween()
 					tween.parallel().tween_property($Head/Camera, "global_position", Vector3(0.336,1.903,1.07), 1)
 					tween.parallel().tween_property($Head/Camera, "global_rotation", Vector3(0,0,0), 0.75)
-					$'../CanvasLayer/RPMSelector'.visible = true
+				
+				
+				if(collider.name == "PullStick"):
+					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
-					#tween.tween_property($Head/Camera, "global_position", camera_posOG, 1.5)
-					#tween.tween_property($Head/Camera, "global_rotation", camera_rotOG, 1.5)
+					$'../CanvasLayer/PullStick'.visible = true
+
+					tween = create_tween()
+					enter_stop_state()
+					camera_posOG = $Head/Camera.global_position
+					print(camera_posOG)
+					camera_rotOG = $Head/Camera.global_rotation
+					tween = create_tween()
+					tween.parallel().tween_property($Head/Camera, "global_position", Vector3(0.02,2.891,0.718), 1)
+					tween.parallel().tween_property($Head/Camera, "global_rotation", Vector3(0,0,0), 0.75)
 
 
 					# now that the cursor is release we will display an rpm selection menu.

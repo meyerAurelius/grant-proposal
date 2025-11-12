@@ -8,12 +8,12 @@ var tween
 	
 func lowposAnimation():
 	tween = create_tween()
-	tween.tween_property($"." , "global_position", lowpos, 0.5)
+	tween.tween_property($"." , "position", lowpos, 0.5)
 	
 func medposAnimation():
 	tween = create_tween()
-	tween.tween_property($".", "global_position", medpos, 0.5)
+	tween.tween_property($".", "position", medpos, 0.5)
 	
 func highposAnimation():
 	tween = create_tween()
-	tween.tween_property($".", "global_position", highpos, 0.5)
+	tween.tween_property($".", "position", highpos, 0.5)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://6vsoy8yquelv"]
 
 [ext_resource type="Texture2D" uid="uid://dkgicexsd0jig" path="res://control_menu/control-arrow.png" id="1_0y8ct"]
-[ext_resource type="Script" uid="uid://c7e8ad3cd2vjr" path="res://control_menu/DraggableArrow.gd" id="2_a6gn8"]
+[ext_resource type="Script" uid="uid://c7e8ad3cd2vjr" path="res://control_menu/DraggableArrowHorizontal.gd" id="2_a6gn8"]
 
 [node name="ControlArrow" type="Sprite2D"]
 texture = ExtResource("1_0y8ct")

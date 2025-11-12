@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://ufcpynseunu0"]
+[gd_scene load_steps=43 format=3 uid="uid://ufcpynseunu0"]
 
 [ext_resource type="Texture2D" uid="uid://cq13phu3n63q" path="res://Textures/ground bad texture.jpg" id="1_ig7tw"]
 [ext_resource type="Material" uid="uid://d06d1y7quuv5p" path="res://Textures/Metal type of thing.tres" id="2_0xm2m"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://5kl1tktw2ngd" path="res://Textures/player/player.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://d3shjhhbuhbt5" path="res://StopWatch/UserInterface.tscn" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://qjcttr0b0kht" path="res://control_menu/rpm_selector.tscn" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://c143vgixbgmb5" path="res://control_menu/pull_level_selector.tscn" id="11_efxa6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7tw"]
 albedo_color = Color(0.874737, 0.874737, 0.874737, 1)
@@ -61,21 +62,6 @@ tracks/0/keys = {
 "values": [Vector3(-0.09818947, 1.3343015, 0.005270362), Vector3(-0.098, 1.232, 0.005)]
 }
 
-[sub_resource type="Animation" id="Animation_dg77c"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.09818947, 1.3343015, 0.005270362)]
-}
-
 [sub_resource type="Animation" id="Animation_ycdy4"]
 resource_name = "PullMed"
 tracks/0/type = "value"
@@ -91,6 +77,21 @@ tracks/0/keys = {
 "values": [Vector3(-0.098, 1.289, 0.005)]
 }
 
+[sub_resource type="Animation" id="Animation_dg77c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.09818947, 1.3343015, 0.005270362)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w48qg"]
 _data = {
 &"PullLow": SubResource("Animation_efxa6"),
@@ -102,6 +103,21 @@ _data = {
 albedo_color = Color(0.4862745, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5vw27"]
+
+[sub_resource type="Animation" id="Animation_4c57u"]
+resource_name = "LeverHigh"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.9773844, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_5vw27"]
 resource_name = "LeverLow"
@@ -131,21 +147,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_4c57u"]
-resource_name = "LeverHigh"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -0.9773844, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_efxa6"]
@@ -306,9 +307,9 @@ radial_segments = 48
 rings = 64
 material = SubResource("StandardMaterial3D_dg77c")
 
-[node name="PullThingIForgotTheName" type="StaticBody3D" parent="Mesh/PullStick"]
+[node name="PullStick" type="StaticBody3D" parent="Mesh/PullStick"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/PullStick/PullThingIForgotTheName"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/PullStick/PullStick"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.04969287, 0)
 shape = SubResource("BoxShape3D_5vw27")
 
@@ -462,3 +463,9 @@ mouse_filter = 2
 
 [node name="RPMSelector" parent="CanvasLayer" instance=ExtResource("8_5vw27")]
 visible = false
+
+[node name="PullStick" parent="CanvasLayer" instance=ExtResource("11_efxa6")]
+visible = false
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01984781, 2.8910637, 0.717608)
