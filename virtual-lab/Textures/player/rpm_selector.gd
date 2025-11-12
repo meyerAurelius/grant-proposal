@@ -17,9 +17,10 @@ func _process(delta: float) -> void:
 # RPM Selector UI
 # 	For this, we just listen to the signals from each button
 # 	and transform the arrow to the corresponding location
-@onready var control_arrow = $'./TextureRect/ControlArrow'
+@onready var control_arrow = $'./ControlArrow'
 @onready var player = get_node("../../Player")
 @onready var leverAnimation = get_node("../../Mesh/Lever Base/LeverAnimation")
+
 
 
 func _on_rpm_0_pressed() -> void:

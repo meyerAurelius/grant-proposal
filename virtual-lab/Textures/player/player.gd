@@ -12,7 +12,6 @@ extends CharacterBody3D
 ## The speed that the character moves at when crouching.
 @export var crouch_speed : float = 1.0
 
-
 ## How fast the character speeds up and slows down when Motion Smoothing is on.
 @export var acceleration : float = 10.0
 ## How high the player jumps.

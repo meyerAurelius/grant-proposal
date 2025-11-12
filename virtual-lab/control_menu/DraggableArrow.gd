@@ -1,14 +1,16 @@
 extends Sprite2D
 
-@onready var leverAnimation = get_node("../../../Mesh/Lever Base/LeverAnimation")
+@onready var leverAnimation = get_node("../../../Mesh/Lever Base/LeverStick")
 
 
 var clicked = false
 var rest_point
 var rest_nodes = []
+@export var leverpos = 0
 
 const MIN_X = 1200
 const MAX_X = 1750
+
 
 
 
@@ -55,11 +57,14 @@ func _input(event: InputEvent) -> void:
 func playSpecificAnimaiton(node):
 	match node.name:
 		"Low":
-			leverAnimation.play("LeverLow")
+			leverAnimation.lowposAnimation()
+			leverpos = 0
 		"Med":
-			leverAnimation.play("RESET")
+			leverAnimation.medposAnimation()
+			leverpos = 1
 		"High":
-			leverAnimation.play("LeverHigh")
+			leverAnimation.highposAnimation()
+			leverpos = 2
 		_:
-			leverAnimation.play("RESET")
+			leverAnimation.medposAnimation()
 		

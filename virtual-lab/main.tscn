@@ -1,9 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://ufcpynseunu0"]
+[gd_scene load_steps=42 format=3 uid="uid://ufcpynseunu0"]
 
 [ext_resource type="Texture2D" uid="uid://cq13phu3n63q" path="res://Textures/ground bad texture.jpg" id="1_ig7tw"]
 [ext_resource type="Material" uid="uid://d06d1y7quuv5p" path="res://Textures/Metal type of thing.tres" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://dehftjtdjmxa1" path="res://hay_bales_4k.hdr" id="2_7mycd"]
+[ext_resource type="Script" uid="uid://dow222qt34fki" path="res://pull_stickAnimation.gd" id="3_kek77"]
 [ext_resource type="VoxelGIData" uid="uid://bonprwnij6yht" path="res://main.VoxelGI_data.res" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://bjkoda3xd6eog" path="res://lever_baseAnimation.gd" id="4_4c57u"]
 [ext_resource type="Texture2D" uid="uid://c3tjovnm7bk5j" path="res://Textures/concrete-917.jpg" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://5kl1tktw2ngd" path="res://Textures/player/player.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://d3shjhhbuhbt5" path="res://StopWatch/UserInterface.tscn" id="7_272bh"]
@@ -43,6 +45,63 @@ albedo_color = Color(0.8235294, 0.8666667, 0.93333334, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kek77"]
 albedo_color = Color(0.8235294, 0.8666667, 0.6392157, 1)
+
+[sub_resource type="Animation" id="Animation_efxa6"]
+resource_name = "PullLow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.09818947, 1.3343015, 0.005270362), Vector3(-0.098, 1.232, 0.005)]
+}
+
+[sub_resource type="Animation" id="Animation_dg77c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.09818947, 1.3343015, 0.005270362)]
+}
+
+[sub_resource type="Animation" id="Animation_ycdy4"]
+resource_name = "PullMed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.96666664),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.098, 1.289, 0.005)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w48qg"]
+_data = {
+&"PullLow": SubResource("Animation_efxa6"),
+&"PullMed": SubResource("Animation_ycdy4"),
+&"RESET": SubResource("Animation_dg77c")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dg77c"]
+albedo_color = Color(0.4862745, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5vw27"]
 
 [sub_resource type="Animation" id="Animation_5vw27"]
 resource_name = "LeverLow"
@@ -166,45 +225,46 @@ material_overlay = SubResource("StandardMaterial3D_h2yge")
 mesh = SubResource("PlaneMesh_1bvp3")
 
 [node name="Mesh" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.26147312, 0, 0, 0, 1, 0.120794535, 1.496918, -0.16935647)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.120794535, 1.496918, -0.16935647)
 gi_mode = 2
+size = Vector3(1, 0.261, 1)
 material = SubResource("StandardMaterial3D_1bvp3")
 
 [node name="Thick Support" type="CSGCylinder3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08542228, 2.3661647, -0.16789067)
+transform = Transform3D(1, 0, 0, 0, 0.26147312, 0, 0, 0, 1, 0.08542228, 0.61868834, -0.16789067)
 radius = 0.1
 height = 4.0
 material = SubResource("StandardMaterial3D_lquwl")
 
 [node name="Thine Support" type="CSGCylinder3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.030528665, 2.3661647, 0.20206726)
+transform = Transform3D(1, 0, 0, 0, 0.26147312, 0, 0, 0, 1, -0.030528665, 0.61868834, 0.20206726)
 radius = 0.025
 height = 4.0
 material = ExtResource("2_0xm2m")
 
 [node name="Motor Area" type="CSGCylinder3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24122816, 1.2310348, 0.1186496)
+transform = Transform3D(1, 0, 0, 0, 0.26147312, 0, 0, 0, 1, 0.24122816, 0.3218825, 0.1186496)
 radius = 0.2
 height = 1.526
 sides = 32
 material = SubResource("StandardMaterial3D_7mycd")
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25626042, 3.7674756, -0.04810947)
+transform = Transform3D(1, 0, 0, 0, 0.26147312, 0, 0, 0, 1, -0.25626042, 0.9850936, -0.04810947)
 radius = 0.1
 height = 1.75
 sides = 32
 material = ExtResource("2_0xm2m")
 
 [node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25626042, 4.3363786, -0.04810947)
+transform = Transform3D(1, 0, 0, 0, 0.26147312, 0, 0, 0, 1, -0.25626042, 1.1338465, -0.04810947)
 radius = 0.15
 height = 0.5
 sides = 32
 material = SubResource("StandardMaterial3D_272bh")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Mesh"]
-transform = Transform3D(0.31419677, 0, 0, 0, 1, 0, 0, 0, 1, -0.28913322, 0.963881, 0.012085348)
+transform = Transform3D(0.31419677, 0, 0, 0, 0.26147312, 0, 0, 0, 1, -0.28913322, 0.25202894, 0.012085348)
 size = Vector3(1.303772, 0.95214844, 0.5473633)
 material = SubResource("StandardMaterial3D_5vw27")
 
@@ -223,12 +283,37 @@ height = 1.0
 sides = 32
 
 [node name="Top" type="CSGBox3D" parent="Mesh"]
-transform = Transform3D(0.31419677, 0, 0, 0, 1, 0, 0, 0, 1, -0.095922634, 4.657906, -0.0076587796)
+transform = Transform3D(0.31419677, 0, 0, 0, 0.26147312, 0, 0, 0, 1, -0.095922634, 1.2179172, -0.0076587796)
 size = Vector3(2.1153145, 0.5, 0.58648825)
 material = SubResource("StandardMaterial3D_kek77")
 
+[node name="PullStick" type="CSGCylinder3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09818947, 1.3343015, 0.005270362)
+radius = 0.025
+height = 0.15
+material = ExtResource("2_0xm2m")
+script = ExtResource("3_kek77")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Mesh/PullStick"]
+libraries = {
+&"": SubResource("AnimationLibrary_w48qg")
+}
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Mesh/PullStick"]
+transform = Transform3D(0.8660253, 0.49999997, 0, -0.5, 0.8660254, 0, -1.8626451e-09, 0, 1, 0, 0.122060776, 0)
+radius = 0.065
+radial_segments = 48
+rings = 64
+material = SubResource("StandardMaterial3D_dg77c")
+
+[node name="PullThingIForgotTheName" type="StaticBody3D" parent="Mesh/PullStick"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/PullStick/PullThingIForgotTheName"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.04969287, 0)
+shape = SubResource("BoxShape3D_5vw27")
+
 [node name="Lever Base" type="CSGCylinder3D" parent="Mesh"]
-transform = Transform3D(0.26536673, 0, 0, 0, 0.0147125935, -0.9998917, 0, 0.99989176, 0.0147125935, 0.24122816, 0.31469297, 0.38450006)
+transform = Transform3D(0.26536673, 0, 0, 0, 0.0038469478, -0.2614448, 0, 0.99989176, 0.0147125935, 0.24122816, 0.082283735, 0.38450003)
 height = 0.05
 sides = 32
 
@@ -241,6 +326,7 @@ libraries = {
 [node name="LeverStick" type="CSGBox3D" parent="Mesh/Lever Base"]
 transform = Transform3D(0.99999964, 0, 0, 0, 1, 0, 0, 0, 1, 0.0064914227, -0.0044608116, -0.37090778)
 size = Vector3(0.1538086, 0.049316406, 0.9946289)
+script = ExtResource("4_4c57u")
 
 [node name="Lever" type="StaticBody3D" parent="Mesh/Lever Base"]
 
@@ -375,13 +461,4 @@ layout_direction = 1
 mouse_filter = 2
 
 [node name="RPMSelector" parent="CanvasLayer" instance=ExtResource("8_5vw27")]
-visible = false
-
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
-
-[node name="Control" parent="CanvasLayer2" instance=ExtResource("7_272bh")]
-layout_direction = 1
-mouse_filter = 2
-
-[node name="RPMSelector" parent="CanvasLayer2" instance=ExtResource("8_5vw27")]
 visible = false
