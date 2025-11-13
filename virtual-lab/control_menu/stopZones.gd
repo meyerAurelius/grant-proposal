@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _draw():
-	draw_rect(Rect2(-25,-25, 150,50) , Color.ALICE_BLUE)
+	draw_rect(Rect2(-25,-25, 75,50) , Color.ALICE_BLUE)
 	
 func select():
 	for child in get_tree().get_nodes_in_group("DropZone"):

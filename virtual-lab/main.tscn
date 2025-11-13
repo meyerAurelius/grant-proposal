@@ -466,6 +466,3 @@ visible = false
 
 [node name="PullStick" parent="CanvasLayer" instance=ExtResource("11_efxa6")]
 visible = false
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01984781, 2.8910637, 0.717608)

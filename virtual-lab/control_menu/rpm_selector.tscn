@@ -51,16 +51,24 @@ z_index = 1
 z_index = 1
 polygon = PackedVector2Array(-49.232544, -33, -43.232544, -39, 42.767456, -39, 48.767456, -33, 49.767456, -22, 8.767456, 56, -2.232544, 57, -50.232544, -25)
 
-[node name="Low" type="Marker2D" parent="." groups=["DropZone"]]
-position = Vector2(1208, 395)
+[node name="0" type="Marker2D" parent="." groups=["DropZone"]]
+position = Vector2(1186, 397)
 script = ExtResource("4_e3cem")
 
-[node name="Med" type="Marker2D" parent="." groups=["DropZone"]]
-position = Vector2(1425, 400)
+[node name="100" type="Marker2D" parent="." groups=["DropZone"]]
+position = Vector2(1307, 395)
 script = ExtResource("4_e3cem")
 
-[node name="High" type="Marker2D" parent="." groups=["DropZone"]]
-position = Vector2(1650, 395)
+[node name="200" type="Marker2D" parent="." groups=["DropZone"]]
+position = Vector2(1467, 400)
+script = ExtResource("4_e3cem")
+
+[node name="300" type="Marker2D" parent="." groups=["DropZone"]]
+position = Vector2(1585, 398)
+script = ExtResource("4_e3cem")
+
+[node name="600" type="Marker2D" parent="." groups=["DropZone"]]
+position = Vector2(1731, 395)
 script = ExtResource("4_e3cem")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -79,7 +87,7 @@ offset_top = 195.0
 offset_right = 652.76746
 offset_bottom = 282.0
 theme_override_font_sizes/normal_font_size = 41
-text = "LOW            MED             HIGH"
+text = "0       100      200      300      600"
 
 [node name="RPM0" type="Button" parent="."]
 visible = false

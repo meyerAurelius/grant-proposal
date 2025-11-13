@@ -1,7 +1,9 @@
 extends CSGBox3D
 
 var lowpos = Vector3(0, deg_to_rad(56) , 0)
-var medpos = Vector3(0, 0 , 0)
+var posHun = Vector3(0, deg_to_rad(28) , 0)
+var medpos = Vector3(0, deg_to_rad(0) , 0)
+var posThreeHun = Vector3(0, deg_to_rad(-28) , 0)
 var highpos = Vector3(0, deg_to_rad(-56) , 0)
 var tween
 
@@ -9,10 +11,18 @@ var tween
 func lowposAnimation():
 	tween = create_tween()
 	tween.tween_property($"." , "rotation", lowpos, 0.5)
+
+func hunposAnimation():
+	tween = create_tween()
+	tween.tween_property($"." , "rotation", posHun, 0.5)
 	
 func medposAnimation():
 	tween = create_tween()
 	tween.tween_property($".", "rotation", medpos, 0.5)
+	
+func threeHunposAnimation():
+	tween = create_tween()
+	tween.tween_property($"." , "rotation", posThreeHun, 0.5)
 	
 func highposAnimation():
 	tween = create_tween()

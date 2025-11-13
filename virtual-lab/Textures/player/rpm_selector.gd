@@ -47,6 +47,11 @@ func _on_rpm_600_pressed() -> void:
 	selected_rpm = 600
 	leverAnimation.play("LeverHigh")
 
+func setRPM(rpm):
+	selected_rpm = rpm
+	print(selected_rpm)
+
+
 func _on_button_pressed() -> void:
 	$'.'.visible = false
 	player.moveCameraBack()
