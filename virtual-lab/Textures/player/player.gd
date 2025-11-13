@@ -12,7 +12,6 @@ extends CharacterBody3D
 ## The speed that the character moves at when crouching.
 @export var crouch_speed : float = 1.0
 
-
 ## How fast the character speeds up and slows down when Motion Smoothing is on.
 @export var acceleration : float = 10.0
 ## How high the player jumps.
@@ -142,6 +141,9 @@ var camera_rotOG :Vector3
 # Tells the computer that it needs to fill values in between certain values
 var tween = create_tween()
 
+# Fluid selection variable: 1 = Brown, 2 = Red, 3 = Blue
+var selectedFluid = 0
+
 #endregion
 
 
@@ -214,12 +216,12 @@ func _physics_process(delta): # Most things happen here.
 func handle_jumping():
 	if jumping_enabled:
 		if continuous_jumping: # Hold down the jump button
-			if Input.is_action_pressed(controls.JUMP) and is_on_floor() and !low_ceiling:
+			if Input.is_action_pressed(controls.JUMP) and is_on_floor() and !low_ceiling and state != "stop":
 				if jump_animation:
 					JUMP_ANIMATION.play("jump", 0.25)
 				velocity.y += jump_velocity # Adding instead of setting so jumping on slopes works properly
 		else:
-			if Input.is_action_just_pressed(controls.JUMP) and is_on_floor() and !low_ceiling:
+			if Input.is_action_just_pressed(controls.JUMP) and is_on_floor() and !low_ceiling and state != "stop":
 				if jump_animation:
 					JUMP_ANIMATION.play("jump", 0.25)
 				velocity.y += jump_velocity
@@ -308,7 +310,7 @@ func check_controls(): # If you add a control, you might want to add a check for
 func handle_state(moving):
 	if sprint_enabled:
 		if sprint_mode == 0:
-			if Input.is_action_pressed(controls.SPRINT) and state != "crouching":
+			if Input.is_action_pressed(controls.SPRINT) and state != "crouching" and state != "stop":
 				if moving:
 					if state != "sprinting":
 						enter_sprint_state()
@@ -333,7 +335,7 @@ func handle_state(moving):
 
 	if crouch_enabled:
 		if crouch_mode == 0:
-			if Input.is_action_pressed(controls.CROUCH) and state != "sprinting":
+			if Input.is_action_pressed(controls.CROUCH) and state != "sprinting" and state != "stop":
 				if state != "crouching":
 					enter_crouch_state()
 			elif state == "crouching" and !$CrouchCeilingDetection.is_colliding():
@@ -370,6 +372,10 @@ func enter_sprint_state():
 		CROUCH_ANIMATION.play_backwards("crouch")
 	state = "sprinting"
 	speed = sprint_speed
+	
+func enter_stop_state():
+	state = "stop"
+	speed = 0
 
 #endregion
 
@@ -464,11 +470,14 @@ func _unhandled_input(event : InputEvent):
 		mouseInput = event.relative
 		
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-			_handle_raycast_interact(event)
+		if state == "stop":
+			pass
 		else:
-			# Re-absorb cursor on click
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+				_handle_raycast_interact(event)
+			else:
+				# Re-absorb cursor on click
+				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		
 	# Toggle debug menu
 	elif event is InputEventKey:
@@ -494,22 +503,45 @@ func _handle_raycast_interact(event : InputEvent = null):
 
 					$'../CanvasLayer/RPMSelector'.visible = true
 
-					var tween = create_tween()
-
+					tween = create_tween()
+					enter_stop_state()
 					camera_posOG = $Head/Camera.global_position
 					print(camera_posOG)
 					camera_rotOG = $Head/Camera.global_rotation
 					tween = create_tween()
-					tween.tween_property($Head/Camera, "global_position", Vector3(0.336,1.903,1.07), 1.5)
-					tween.tween_property($Head/Camera, "global_rotation", Vector3(0,0,0), 0.5)
+					tween.parallel().tween_property($Head/Camera, "global_position", Vector3(0.336,1.903,1.07), 1)
+					tween.parallel().tween_property($Head/Camera, "global_rotation", Vector3(0,0,0), 0.75)
+				
+				
+				if(collider.name == "PullStick"):
+					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
-					$LeverInterface.visible = true
-					$'../CanvasLayer/RPMSelector'.visible = true
+					$'../CanvasLayer/PullStick'.visible = true
 
-					#tween.tween_property($Head/Camera, "global_position", camera_posOG, 1.5)
-					#tween.tween_property($Head/Camera, "global_rotation", camera_rotOG, 1.5)
+					tween = create_tween()
+					enter_stop_state()
+					camera_posOG = $Head/Camera.global_position
+					print(camera_posOG)
+					camera_rotOG = $Head/Camera.global_rotation
+					tween = create_tween()
+					tween.parallel().tween_property($Head/Camera, "global_position", Vector3(0.02,2.891,0.718), 1)
+					tween.parallel().tween_property($Head/Camera, "global_rotation", Vector3(0,0,0), 0.75)
 
-
+				if(collider.name == "BentoniteSlurry"):
+					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+					selectedFluid = 1
+					$'../CanvasLayer/FluidSelectionMenu'.visible = true
+					
+				
+				if(collider.name == "Ketchup"):
+					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+					selectedFluid = 2
+					$'../CanvasLayer/FluidSelectionMenu'.visible = true
+				
+				if(collider.name == "Water"):
+					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+					selectedFluid = 3
+					$'../CanvasLayer/FluidSelectionMenu'.visible = true
 					# now that the cursor is release we will display an rpm selection menu.
 					
 				
@@ -534,7 +566,9 @@ func update_camera_fov():
 		CAMERA.fov = lerp(CAMERA.fov, 75.0, 0.3)
 
 func handle_pausing():
-	if Input.is_action_just_pressed(controls.PAUSE):
+	if state == "stop":
+		pass
+	elif Input.is_action_just_pressed(controls.PAUSE):
 		# You may want another node to handle pausing, because this player may get paused too.
 		match Input.mouse_mode:
 			Input.MOUSE_MODE_CAPTURED:
@@ -547,9 +581,17 @@ func handle_pausing():
 #endregion
 
 #region UI Functions 
-func _on_button_pressed() -> void:
-	$LeverInterface.visible = false
+func moveCameraBack():
 	$'../CanvasLayer/RPMSelector'.visible = false
 	tween = create_tween()
-	tween.tween_property($Head/Camera, "global_position", camera_posOG, 1.5)
-	tween.tween_property($Head/Camera, "global_rotation", camera_rotOG, 0.25)
+	tween.parallel().tween_property($Head/Camera, "global_position", camera_posOG, 1)
+	tween.parallel().tween_property($Head/Camera, "global_rotation", camera_rotOG, 0.75)
+	await get_tree().create_timer(1.5).timeout
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	enter_normal_state()
+	
+func captureMouse():
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+func getLiquidType():
+	return selectedFluid
