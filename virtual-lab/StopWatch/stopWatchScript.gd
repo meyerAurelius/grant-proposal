@@ -6,6 +6,7 @@ var paused_time = 0
 @onready var animationP =  $AnimationPlayer
 @onready var animationP2 = $Rotate
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if (Input.is_action_just_pressed("toggle_stopwatch")):

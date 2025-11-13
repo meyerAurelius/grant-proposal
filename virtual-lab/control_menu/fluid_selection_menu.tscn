@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://dex1r8ty853ba"]
+
+[ext_resource type="Texture2D" uid="uid://ckc1en67xtyby" path="res://control_menu/header.png" id="1_4m1y3"]
+[ext_resource type="Script" uid="uid://dj0j5obt5dnl8" path="res://control_menu/fluid_selection_menu.gd" id="1_plr8s"]
+
+[node name="FluidSelectionMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_plr8s")
+
+[node name="RPMLabel" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -799.0
+offset_top = -400.0
+offset_right = 793.9824
+offset_bottom = 396.4912
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_4m1y3")
+expand_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RPMLabel"]
+layout_mode = 0
+offset_left = 118.99999
+offset_top = 141.0
+offset_right = 1519.0
+offset_bottom = 641.0
+theme_override_font_sizes/normal_font_size = 92
+bbcode_enabled = true
+text = "[center]Do you want to select this fluid?[/center]"
+
+[node name="Yes" type="Button" parent="RPMLabel"]
+layout_mode = 0
+offset_left = 335.0
+offset_top = 475.00006
+offset_right = 375.0
+offset_bottom = 515.00006
+scale = Vector2(5, 5)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+text = "Yes"
+
+[node name="No" type="Button" parent="RPMLabel"]
+layout_mode = 0
+offset_left = 1027.0
+offset_top = 475.0
+offset_right = 1067.0
+offset_bottom = 515.0
+scale = Vector2(5, 5)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+text = "No"
+
+[connection signal="pressed" from="RPMLabel/Yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="RPMLabel/No" to="." method="_on_no_pressed"]
