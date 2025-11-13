@@ -141,6 +141,9 @@ var camera_rotOG :Vector3
 # Tells the computer that it needs to fill values in between certain values
 var tween = create_tween()
 
+# Fluid selection variable: 1 = Brown, 2 = Red, 3 = Blue
+var selectedFluid = 0
+
 #endregion
 
 
@@ -524,7 +527,21 @@ func _handle_raycast_interact(event : InputEvent = null):
 					tween.parallel().tween_property($Head/Camera, "global_position", Vector3(0.02,2.891,0.718), 1)
 					tween.parallel().tween_property($Head/Camera, "global_rotation", Vector3(0,0,0), 0.75)
 
-
+				if(collider.name == "BentoniteSlurry"):
+					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+					selectedFluid = 1
+					$'../CanvasLayer/FluidSelectionMenu'.visible = true
+					
+				
+				if(collider.name == "Ketchup"):
+					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+					selectedFluid = 2
+					$'../CanvasLayer/FluidSelectionMenu'.visible = true
+				
+				if(collider.name == "Water"):
+					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+					selectedFluid = 3
+					$'../CanvasLayer/FluidSelectionMenu'.visible = true
 					# now that the cursor is release we will display an rpm selection menu.
 					
 				
@@ -572,3 +589,9 @@ func moveCameraBack():
 	await get_tree().create_timer(1.5).timeout
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	enter_normal_state()
+	
+func captureMouse():
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+func getLiquidType():
+	return selectedFluid

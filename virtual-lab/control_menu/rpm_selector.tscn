@@ -73,10 +73,10 @@ script = ExtResource("4_e3cem")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 1135.2325
-offset_top = 294.0
-offset_right = 1858.6279
-offset_bottom = 596.0
+offset_left = 1135.0
+offset_top = 293.0
+offset_right = 1858.3954
+offset_bottom = 595.0
 mouse_filter = 2
 texture = ExtResource("2_clhu6")
 
