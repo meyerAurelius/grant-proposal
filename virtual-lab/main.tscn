@@ -382,19 +382,19 @@ height = 0.5
 sides = 32
 material = SubResource("StandardMaterial3D_272bh")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Mesh"]
+[node name="Machine Base" type="CSGBox3D" parent="Mesh"]
 transform = Transform3D(0.31419677, 0, 0, 0, 0.26147312, 0, 0, 0, 1, -0.28913322, 0.25202894, 0.012085348)
 size = Vector3(1.303772, 0.95214844, 0.5473633)
 material = SubResource("StandardMaterial3D_5vw27")
 
-[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Mesh/CSGBox3D"]
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Mesh/Machine Base"]
 transform = Transform3D(3.1827197, 0, 0, 0, 1, 0, 0, 0, 1, 0.10462487, 0.24736547, -0.06019482)
 operation = 2
 radius = 0.115
 height = 1.0
 sides = 32
 
-[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Mesh/CSGBox3D"]
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Mesh/Machine Base"]
 transform = Transform3D(3.1827216, 0, 0, 0, 1, 0, 0, 0, 1, -0.32343245, 0.24736547, 0.15160134)
 operation = 2
 radius = 0.02

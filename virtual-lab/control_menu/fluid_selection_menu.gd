@@ -26,13 +26,19 @@ func _on_yes_pressed() -> void:
 			$".".visible = false
 			brown.putInMachine()
 			player.captureMouse()
+			await get_tree().create_timer(1.5).timeout
+			brown.upInMachine()
 		2:
 			print("red")
 			$".".visible = false
 			red.putInMachine()
 			player.captureMouse()
+			await get_tree().create_timer(1.5).timeout
+			red.upInMachine()
 		3:
 			print("Blue")
 			$".".visible = false
 			blue.putInMachine()
 			player.captureMouse()
+			await get_tree().create_timer(1.5).timeout
+			blue.upInMachine()
