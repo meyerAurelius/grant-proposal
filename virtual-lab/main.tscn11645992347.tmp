@@ -691,10 +691,6 @@ material = SubResource("StandardMaterial3D_vivmo")
 script = ExtResource("22_ryguw")
 
 [node name="Timer" type="Timer" parent="DataBackEnd"]
-wait_time = 0.25
-autostart = true
 
 [node name="Globals" type="Node" parent="."]
 script = ExtResource("23_d13ii")
-
-[connection signal="timeout" from="DataBackEnd/Timer" to="DataBackEnd" method="_on_timer_timeout"]

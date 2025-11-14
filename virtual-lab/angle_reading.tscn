@@ -20,7 +20,7 @@ albedo_color = Color(1, 0, 0, 1)
 transform = Transform3D(1, 0, 0, 0, 0.014877319, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="AngleReadingMesh" type="CSGBox3D" parent="."]
-transform = Transform3D(-0.24987656, 0, 0.007852712, 0, 0.0009999998, 0, -0.007852712, 0, -0.24987656, 0.009360428, 2.1517706, 0.07216607)
+transform = Transform3D(-0.24987654, 0, 0.007852728, 0, 0.0009999998, 0, -0.007852728, 0, -0.24987654, 0.009360428, 2.1517706, 0.07216607)
 size = Vector3(1, 1.2441406, 1)
 material = SubResource("StandardMaterial3D_2cqfq")
 

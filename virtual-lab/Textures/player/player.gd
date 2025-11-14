@@ -546,6 +546,7 @@ func _handle_raycast_interact(event : InputEvent = null):
 					
 				if(collider.name == "AngleReading"):
 					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+					$'../CanvasLayer/ExitAngleView'.visible = true
 
 					tween = create_tween()
 					enter_stop_state()
