@@ -14,6 +14,6 @@ func _process(delta: float) -> void:
 var reference_angle = 178.2 # our starting angle we need to subtract from
 
 func _on_timer_timeout() -> void:
-	Globals.angle = 178.2 - Globals.rpm/10
+	Globals.angle = 178.2 - Globals.rpm/10 * Globals.viscosity_factor
 	$'../Viscometer/AngleReading/AngleReadingMesh'.rotation_degrees.y = Globals.angle 
 	

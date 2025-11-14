@@ -13,3 +13,5 @@ func _process(delta: float) -> void:
 var rpm : int = 0
 var temp : float = 0
 var angle : float = 0
+var viscosity_factor : float = 1.00 # This allows use to change the angle reading on a per
+#										fluid basis 
