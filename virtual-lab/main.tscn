@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=4 uid="uid://ufcpynseunu0"]
+[gd_scene load_steps=67 format=4 uid="uid://ufcpynseunu0"]
 
 [ext_resource type="Texture2D" uid="uid://cq13phu3n63q" path="res://Textures/ground bad texture.jpg" id="1_ig7tw"]
 [ext_resource type="Material" uid="uid://d06d1y7quuv5p" path="res://Textures/Metal type of thing.tres" id="2_0xm2m"]
@@ -20,11 +20,11 @@
 [ext_resource type="PackedScene" uid="uid://dex1r8ty853ba" path="res://control_menu/fluid_selection_menu.tscn" id="12_w48qg"]
 [ext_resource type="Material" uid="uid://dbk27qk2i82pt" path="res://Textures/Materials/Ketchput.tres" id="13_ycdy4"]
 [ext_resource type="Script" uid="uid://bpjjybxkjbylt" path="res://FluidSampleAnimation.gd" id="14_vivmo"]
+[ext_resource type="PackedScene" path="res://control_menu/exit_angle_view.tscn" id="18_getpj"]
 [ext_resource type="Texture2D" uid="uid://2pbpn8siiqhd" path="res://Textures/Thermometer/Thermomter face right size.png" id="21_ryguw"]
 [ext_resource type="Texture2D" uid="uid://dy15wmrai1vph" path="res://Textures/Thermometer/Thermometer hand.png" id="22_d13ii"]
-[ext_resource type="PackedScene" uid="uid://dw2sl0kxw73rw" path="res://control_menu/exit_angle_view.tscn" id="18_getpj"]
-[ext_resource type="Script" uid="uid://bl227re7jggba" path="res://data_back_end.gd" id="22_ryguw"]
-[ext_resource type="Script" uid="uid://rbisa31wrmpm" path="res://Globals.gd" id="23_d13ii"]
+[ext_resource type="Script" path="res://data_back_end.gd" id="22_ryguw"]
+[ext_resource type="Script" path="res://Globals.gd" id="23_d13ii"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7tw"]
 albedo_color = Color(0.874737, 0.874737, 0.874737, 1)
@@ -746,6 +746,7 @@ mesh = SubResource("QuadMesh_qsp4k")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Thermometer/Thermometer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10321951, 0)
 shape = SubResource("BoxShape3D_ryguw")
+
 [node name="DataBackEnd" type="Node" parent="."]
 script = ExtResource("22_ryguw")
 
