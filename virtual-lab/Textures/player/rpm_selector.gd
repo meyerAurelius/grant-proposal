@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 # 	and transform the arrow to the corresponding location
 @onready var control_arrow = $'./ControlArrow'
 @onready var player = get_node("../../Player")
-@onready var leverAnimation = get_node("../../Mesh/Lever Base/LeverAnimation")
+@onready var leverAnimation = get_node("../../Viscometer/Lever Base/LeverAnimation")
 
 
 

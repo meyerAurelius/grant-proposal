@@ -3,11 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://cq13phu3n63q" path="res://Textures/ground bad texture.jpg" id="1_ig7tw"]
 [ext_resource type="Material" uid="uid://d06d1y7quuv5p" path="res://Textures/Metal type of thing.tres" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://dehftjtdjmxa1" path="res://hay_bales_4k.hdr" id="2_7mycd"]
+[ext_resource type="Material" uid="uid://fak4xpw7ndyr" path="res://Textures/Materials/viscometer.tres" id="2_yaehf"]
 [ext_resource type="Script" uid="uid://dow222qt34fki" path="res://pull_stickAnimation.gd" id="3_kek77"]
 [ext_resource type="VoxelGIData" uid="uid://bonprwnij6yht" path="res://main.VoxelGI_data.res" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://bjkoda3xd6eog" path="res://lever_baseAnimation.gd" id="4_4c57u"]
+[ext_resource type="Material" uid="uid://caimt0mpw4mym" path="res://Textures/Materials/motor_material.tres" id="4_074og"]
+[ext_resource type="Material" uid="uid://cs3gxhxec5qj2" path="res://Textures/Materials/machine_base.tres" id="5_cegan"]
 [ext_resource type="Texture2D" uid="uid://c3tjovnm7bk5j" path="res://Textures/concrete-917.jpg" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://5kl1tktw2ngd" path="res://Textures/player/player.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://d2i68inwk3in7" path="res://angle_reading.tscn" id="6_074og"]
+[ext_resource type="Material" uid="uid://cths86gfg6ryk" path="res://Textures/Materials/handle_red.tres" id="7_82xsv"]
 [ext_resource type="PackedScene" uid="uid://d3shjhhbuhbt5" path="res://StopWatch/UserInterface.tscn" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://qjcttr0b0kht" path="res://control_menu/rpm_selector.tscn" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://c143vgixbgmb5" path="res://control_menu/pull_level_selector.tscn" id="11_efxa6"]
@@ -31,24 +36,7 @@ uv1_scale = Vector3(20, 20, 20)
 [sub_resource type="PlaneMesh" id="PlaneMesh_1bvp3"]
 size = Vector2(15, 15)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
-albedo_color = Color(0.8235294, 0.8666667, 0.6392157, 1)
-metallic = 0.3
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
-metallic = 1.0
-roughness = 0.48
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mycd"]
-albedo_color = Color(0.8235294, 0.8666667, 0.77254903, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_272bh"]
-albedo_color = Color(0.8235294, 0.8666667, 0.6392157, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
-albedo_color = Color(0.8235294, 0.8666667, 0.93333334, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kek77"]
 albedo_color = Color(0.8235294, 0.8666667, 0.6392157, 1)
 
 [sub_resource type="Animation" id="Animation_efxa6"]
@@ -60,10 +48,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.9),
+"times": PackedFloat32Array(0.033333335, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(-0.09818947, 1.3343015, 0.005270362), Vector3(-0.098, 1.232, 0.005)]
+"values": [Vector3(-0.098, 1.334, -0.095), Vector3(-0.09799998, 1.2320001, -0.09463584)]
 }
 
 [sub_resource type="Animation" id="Animation_ycdy4"]
@@ -75,10 +63,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.96666664),
+"times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.098, 1.289, 0.005)]
+"values": [Vector3(-0.09799998, 1.289, -0.08963027)]
 }
 
 [sub_resource type="Animation" id="Animation_dg77c"]
@@ -90,10 +78,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(-0.03333333),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.09818947, 1.3343015, 0.005270362)]
+"values": [Vector3(-0.098, 1.3574018, -0.09199997)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w48qg"]
@@ -102,9 +90,6 @@ _data = {
 &"PullMed": SubResource("Animation_ycdy4"),
 &"RESET": SubResource("Animation_dg77c")
 }
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dg77c"]
-albedo_color = Color(0.4862745, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5vw27"]
 
@@ -159,6 +144,11 @@ _data = {
 &"LeverLow": SubResource("Animation_5vw27"),
 &"RESET": SubResource("Animation_kek77")
 }
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_getpj"]
+albedo_color = Color(0.4862745, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.4862745, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7mycd"]
 size = Vector3(1, 0.14477539, 1.3120117)
@@ -324,7 +314,7 @@ size = Vector3(4.1694336, 1.5102539, 1)
 material = SubResource("StandardMaterial3D_ig7tw")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Table/Table Mesh"]
-transform = Transform3D(3.4493406, 0, 0, 0, 0, -2.3000004, 0, 0.32800755, 0, 0, -0.6366408, -0.0053410525)
+transform = Transform3D(3.4493406, 0, 0, 0, 0, -2.3000004, 0, 0.32800755, 0, 0, -0.6366408, -0.005341052)
 operation = 2
 height = 3.563
 sides = 64
@@ -343,115 +333,123 @@ shape = SubResource("BoxShape3D_0xm2m")
 material_overlay = SubResource("StandardMaterial3D_h2yge")
 mesh = SubResource("PlaneMesh_1bvp3")
 
-[node name="Mesh" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.120794535, 1.496918, -0.16935647)
+[node name="Viscometer" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.11877987, 1.496918, 0.10465145)
 gi_mode = 2
 size = Vector3(1, 0.261, 1)
-material = SubResource("StandardMaterial3D_1bvp3")
+material = ExtResource("2_yaehf")
 
-[node name="Thick Support" type="CSGCylinder3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 0.26147312, 0, 0, 0, 1, 0.08542228, 0.61868834, -0.16789067)
+[node name="Thick Support" type="CSGCylinder3D" parent="Viscometer"]
+transform = Transform3D(1, 0, 0, 0, 0.26147312, 0, 0, 0, 1, 0.085422285, 0.61868834, -0.24978802)
 radius = 0.1
 height = 4.0
-material = SubResource("StandardMaterial3D_lquwl")
+material = ExtResource("2_0xm2m")
 
-[node name="Thine Support" type="CSGCylinder3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 0.26147312, 0, 0, 0, 1, -0.030528665, 0.61868834, 0.20206726)
+[node name="Thine Support" type="CSGCylinder3D" parent="Viscometer"]
+transform = Transform3D(1, 0, 0, 0, 0.26147312, 0, 0, 0, 1, -0.030528657, 0.61868834, 0.120169915)
 radius = 0.025
 height = 4.0
 material = ExtResource("2_0xm2m")
 
-[node name="Motor Area" type="CSGCylinder3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 0.26147312, 0, 0, 0, 1, 0.24122816, 0.3218825, 0.1186496)
+[node name="Motor Area" type="CSGCylinder3D" parent="Viscometer"]
+transform = Transform3D(1, 0, 0, 0, 0.26147312, 0, 0, 0, 1, 0.24122816, 0.3218825, 0.03675226)
 radius = 0.2
 height = 1.526
 sides = 32
-material = SubResource("StandardMaterial3D_7mycd")
+material = ExtResource("4_074og")
 
-[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 0.26147312, 0, 0, 0, 1, -0.25626042, 0.9850936, -0.04810947)
-radius = 0.1
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Viscometer"]
+transform = Transform3D(1, 0, 0, 0, 0.26147312, 0, 0, 0, 1, -0.25626042, 0.9850936, -0.13000682)
+radius = 0.075
 height = 1.75
 sides = 32
-material = ExtResource("2_0xm2m")
+material = ExtResource("5_cegan")
 
-[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 0.26147312, 0, 0, 0, 1, -0.25626042, 1.1338465, -0.04810947)
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Viscometer"]
+transform = Transform3D(1, 0, 0, 0, 0.26147312, 0, 0, 0, 1, -0.25626042, 1.1338465, -0.13000682)
 radius = 0.15
 height = 0.5
 sides = 32
 material = SubResource("StandardMaterial3D_272bh")
 
-[node name="Machine Base" type="CSGBox3D" parent="Mesh"]
-transform = Transform3D(0.31419677, 0, 0, 0, 0.26147312, 0, 0, 0, 1, -0.28913322, 0.25202894, 0.012085348)
+[node name="Machine Base" type="CSGBox3D" parent="Viscometer"]
+transform = Transform3D(0.31419677, 0, 0, 0, 0.26147312, 0, 0, 0, 1, -0.28913322, 0.25202894, -0.069812)
 size = Vector3(1.303772, 0.95214844, 0.5473633)
-material = SubResource("StandardMaterial3D_5vw27")
+material = ExtResource("5_cegan")
 
-[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Mesh/Machine Base"]
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Viscometer/Machine Base"]
 transform = Transform3D(3.1827197, 0, 0, 0, 1, 0, 0, 0, 1, 0.10462487, 0.24736547, -0.06019482)
 operation = 2
 radius = 0.115
 height = 1.0
 sides = 32
+material = ExtResource("5_cegan")
 
-[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Mesh/Machine Base"]
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Viscometer/Machine Base"]
 transform = Transform3D(3.1827216, 0, 0, 0, 1, 0, 0, 0, 1, -0.32343245, 0.24736547, 0.15160134)
 operation = 2
 radius = 0.02
 height = 1.0
 sides = 32
+material = ExtResource("5_cegan")
 
-[node name="Top" type="CSGBox3D" parent="Mesh"]
-transform = Transform3D(0.31419677, 0, 0, 0, 0.26147312, 0, 0, 0, 1, -0.095922634, 1.2179172, -0.0076587796)
+[node name="Top" type="CSGBox3D" parent="Viscometer"]
+transform = Transform3D(0.31419677, 0, 0, 0, 0.26147312, 0, 0, 0, 1, -0.09592263, 1.2179172, -0.08955612)
 size = Vector3(2.1153145, 0.5, 0.58648825)
-material = SubResource("StandardMaterial3D_kek77")
+material = ExtResource("2_yaehf")
 
-[node name="PullStick" type="CSGCylinder3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09818947, 1.3343015, 0.005270362)
+[node name="PullStick" type="CSGCylinder3D" parent="Viscometer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.098, 1.3574018, -0.09199997)
 radius = 0.025
 height = 0.15
 material = ExtResource("2_0xm2m")
 script = ExtResource("3_kek77")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Mesh/PullStick"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Viscometer/PullStick"]
 libraries = {
 &"": SubResource("AnimationLibrary_w48qg")
 }
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Mesh/PullStick"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Viscometer/PullStick"]
 transform = Transform3D(0.8660253, 0.49999997, 0, -0.5, 0.8660254, 0, -1.8626451e-09, 0, 1, 0, 0.122060776, 0)
 radius = 0.065
 radial_segments = 48
 rings = 64
-material = SubResource("StandardMaterial3D_dg77c")
+material = ExtResource("7_82xsv")
 
-[node name="PullStick" type="StaticBody3D" parent="Mesh/PullStick"]
+[node name="PullStick" type="StaticBody3D" parent="Viscometer/PullStick"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.038847864)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/PullStick/PullStick"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Viscometer/PullStick/PullStick"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.04969287, 0)
 shape = SubResource("BoxShape3D_5vw27")
 
-[node name="Lever Base" type="CSGCylinder3D" parent="Mesh"]
-transform = Transform3D(0.26536673, 0, 0, 0, 0.0038469478, -0.2614448, 0, 0.99989176, 0.0147125935, 0.24122816, 0.082283735, 0.38450003)
+[node name="Lever Base" type="CSGCylinder3D" parent="Viscometer"]
+transform = Transform3D(0.26536673, 0, 0, 0, 0.0043929606, -0.26158735, 0, 1.1418104, 0.014720616, -0.26083457, 0.082283735, 0.35036868)
 height = 0.05
 sides = 32
+material = ExtResource("5_cegan")
 
-[node name="LeverAnimation" type="AnimationPlayer" parent="Mesh/Lever Base"]
+[node name="LeverAnimation" type="AnimationPlayer" parent="Viscometer/Lever Base"]
 root_node = NodePath("../LeverStick")
 libraries = {
 &"": SubResource("AnimationLibrary_efxa6")
 }
 
-[node name="LeverStick" type="CSGBox3D" parent="Mesh/Lever Base"]
-transform = Transform3D(0.99999964, 0, 0, 0, 1, 0, 0, 0, 1, 0.0064914227, -0.0044608116, -0.37090778)
+[node name="LeverStick" type="CSGBox3D" parent="Viscometer/Lever Base"]
+transform = Transform3D(0.64802223, 0, 0, 0, 0.7695788, 0, 0, 0, 0.7827932, 0.0064911842, -0.00077211857, -0.3708458)
 size = Vector3(0.1538086, 0.049316406, 0.9946289)
+material = SubResource("StandardMaterial3D_getpj")
 script = ExtResource("4_4c57u")
 
-[node name="Lever" type="StaticBody3D" parent="Mesh/Lever Base"]
+[node name="Lever" type="StaticBody3D" parent="Viscometer/Lever Base"]
 
-[node name="Lever" type="CollisionShape3D" parent="Mesh/Lever Base/Lever"]
+[node name="Lever" type="CollisionShape3D" parent="Viscometer/Lever Base/Lever"]
 transform = Transform3D(0.99999964, 0, 0, 0, 1, -1.09896064e-07, 0, 4.656613e-09, 1, 0, 0.0054932535, -0.15600538)
 shape = SubResource("BoxShape3D_7mycd")
+
+[node name="AngleReading" parent="Viscometer" instance=ExtResource("6_074og")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 0.014877319, 0, 1, 0, -4.371139e-08, -0.31475464, 1.2449079, -0.08556165)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7dm0k")
@@ -477,10 +475,32 @@ data = ExtResource("4_1bvp3")
 [node name="SpotLight3D2" type="SpotLight3D" parent="WorldEnvironment/Lighting"]
 transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, -4.2417383, 7.48878, 0.80830735)
 light_color = Color(0.8652717, 0.9109658, 1, 1)
-light_energy = 0.368
+light_energy = 0.431
 spot_range = 12.208842
 spot_attenuation = -0.21
 spot_angle = 75.9375
+
+[node name="OmniLight3D" type="OmniLight3D" parent="WorldEnvironment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 6.3379736, 0)
+light_color = Color(1, 1, 0.8862745, 1)
+light_energy = 0.1
+light_indirect_energy = 4.315
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 12.085
+omni_attenuation = -0.474
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="WorldEnvironment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.94388, 6.3379736, 0)
+light_color = Color(1, 1, 0.8862745, 1)
+light_energy = 0.1
+light_indirect_energy = 4.315
+light_bake_mode = 1
+shadow_enabled = true
+shadow_bias = 1.433
+shadow_blur = 10.0
+omni_range = 12.085
+omni_attenuation = -0.474
 
 [node name="Building" type="Node3D" parent="."]
 

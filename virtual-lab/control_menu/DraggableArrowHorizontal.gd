@@ -1,6 +1,6 @@
 extends Sprite2D
 
-@onready var leverAnimation = get_node("../../../Mesh/Lever Base/LeverStick")
+@onready var leverAnimation = get_node("../../../Viscometer/Lever Base/LeverStick")
 @onready var rpm = get_node("../../RPMSelector")
 
 var clicked = false

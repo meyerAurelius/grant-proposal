@@ -509,7 +509,7 @@ func _handle_raycast_interact(event : InputEvent = null):
 					print(camera_posOG)
 					camera_rotOG = $Head/Camera.global_rotation
 					tween = create_tween()
-					tween.parallel().tween_property($Head/Camera, "global_position", Vector3(0.336,1.903,1.07), 1)
+					tween.parallel().tween_property($Head/Camera, "global_position", Vector3(.636,1.703,1.2), 1)
 					tween.parallel().tween_property($Head/Camera, "global_rotation", Vector3(0,0,0), 0.75)
 				
 				
