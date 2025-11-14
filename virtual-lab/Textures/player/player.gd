@@ -527,6 +527,19 @@ func _handle_raycast_interact(event : InputEvent = null):
 					tween.parallel().tween_property($Head/Camera, "global_position", Vector3(0.02,2.891,0.718), 1)
 					tween.parallel().tween_property($Head/Camera, "global_rotation", Vector3(0,0,0), 0.75)
 
+				if(collider.name == "Thermometer"):
+					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+					# $'../CanvasLayer/PullStick'.visible = true
+					tween = create_tween()
+					enter_stop_state()
+					camera_posOG = $Head/Camera.global_position
+					print(camera_posOG)
+					camera_rotOG = $Head/Camera.global_rotation
+					tween = create_tween()
+					tween.parallel().tween_property($Head/Camera, "global_position", Vector3(0.198,2.237,0.5), 1)
+					tween.parallel().tween_property($Head/Camera, "global_rotation", Vector3(deg_to_rad(-90),0,0), 0.75)
+				
 				if(collider.name == "BentoniteSlurry"):
 					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 					selectedFluid = 1
