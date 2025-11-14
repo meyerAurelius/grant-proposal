@@ -41,6 +41,7 @@ script = ExtResource("1_5t1ic")
 visibility_layer = 3
 z_index = 1
 position = Vector2(1422, 632)
+rotation = 1.5682737
 texture = ExtResource("2_02hkl")
 script = ExtResource("3_5t1ic")
 
@@ -52,16 +53,19 @@ z_index = 1
 polygon = PackedVector2Array(-49.232544, -33, -43.232544, -39, 42.767456, -39, 48.767456, -33, 49.767456, -22, 8.767456, 56, -2.232544, 57, -50.232544, -25)
 
 [node name="Low" type="Marker2D" parent="." groups=["DropZone"]]
+visible = false
 z_index = 2
 position = Vector2(1425, 848)
 script = ExtResource("4_5t1ic")
 
 [node name="Med" type="Marker2D" parent="." groups=["DropZone"]]
+visible = false
 z_index = 2
 position = Vector2(1425, 606)
 script = ExtResource("4_5t1ic")
 
 [node name="High" type="Marker2D" parent="." groups=["DropZone"]]
+visible = false
 z_index = 2
 position = Vector2(1423, 380)
 script = ExtResource("4_5t1ic")
