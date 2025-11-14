@@ -12,7 +12,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-@export var selected_rpm = 0
+
 
 # RPM Selector UI
 # 	For this, we just listen to the signals from each button
@@ -25,31 +25,30 @@ func _process(delta: float) -> void:
 
 func _on_rpm_0_pressed() -> void:
 	control_arrow.position = Vector2(70, 93)
-	selected_rpm = 0
+	Globals.rpm = 0
 	leverAnimation.play("LeverLow")
 	
 func _on_rpm_100_pressed() -> void:
 	control_arrow.position = Vector2(170, 93)
-	selected_rpm = 100
+	Globals.rpm = 100
 
 
 func _on_rpm_200_pressed() -> void:
 	control_arrow.position = Vector2(321, 93)
-	selected_rpm = 200
+	Globals.rpm = 200
 	leverAnimation.play("RESET")
 
 func _on_rpm_300_pressed() -> void:
 	control_arrow.position = Vector2(452, 93)
-	selected_rpm = 300
+	Globals.rpm = 300
 
 func _on_rpm_600_pressed() -> void:
 	control_arrow.position = Vector2(607, 93)
-	selected_rpm = 600
+	Globals.rpm = 600
 	leverAnimation.play("LeverHigh")
 
 func setRPM(rpm):
-	selected_rpm = rpm
-	print(selected_rpm)
+	Globals.rpm = rpm
 
 
 func _on_button_pressed() -> void:

@@ -541,17 +541,20 @@ func _handle_raycast_interact(event : InputEvent = null):
 					tween.parallel().tween_property($Head/Camera, "global_rotation", Vector3(deg_to_rad(-90),0,0), 0.75)
 				
 				if(collider.name == "BentoniteSlurry"):
+					Globals.viscosity_factor = 1.1 # slightly more viscous than water, probably, idk
 					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 					selectedFluid = 1
 					$'../CanvasLayer/FluidSelectionMenu'.visible = true
 					
 				
 				if(collider.name == "Ketchup"):
+					Globals.viscosity_factor = 1.5 # way more viscous than water
 					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 					selectedFluid = 2
 					$'../CanvasLayer/FluidSelectionMenu'.visible = true
 				
 				if(collider.name == "Water"):
+					Globals.viscosity_factor = 1.0 # water is water
 					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 					selectedFluid = 3
 					$'../CanvasLayer/FluidSelectionMenu'.visible = true
@@ -559,6 +562,7 @@ func _handle_raycast_interact(event : InputEvent = null):
 					
 				if(collider.name == "AngleReading"):
 					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+					$'../CanvasLayer/ExitAngleView'.visible = true
 
 					tween = create_tween()
 					enter_stop_state()
