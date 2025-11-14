@@ -1,8 +1,8 @@
 extends CSGCylinder3D
 
-var lowpos = Vector3(-0.098, 1.232 ,0.005)
-var medpos = Vector3(-0.098, 1.289 ,0.005)
-var highpos = Vector3(-0.098, 1.334 ,0.005)
+var lowpos = Vector3(-0.098, 1.232 ,-0.091)
+var medpos = Vector3(-0.098, 1.289 ,-0.091)
+var highpos = Vector3(-0.098, 1.334 ,-0.091)
 var tween
 
 	

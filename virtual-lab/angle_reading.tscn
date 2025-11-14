@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2i68inwk3in7"]
+
+[ext_resource type="Texture2D" uid="uid://cujhttfhy4qio" path="res://Textures/protractor.png" id="1_dpoir"]
+[ext_resource type="Material" uid="uid://fak4xpw7ndyr" path="res://Textures/Materials/viscometer.tres" id="2_is4pb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2cqfq"]
+albedo_color = Color(0.8102151, 0.8102147, 0.8102148, 1)
+albedo_texture = ExtResource("1_dpoir")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_is4pb"]
+albedo_color = Color(0.87638086, 0.86833775, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_is4pb"]
+size = Vector3(0.41967773, 1, 0.40771484)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sq52x"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="AngleReading" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.014877319, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="AngleReadingMesh" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.24987654, 0, 0.007852728, 0, 0.0009999998, 0, -0.007852728, 0, -0.24987654, 0.009360428, 2.1517706, 0.07216607)
+size = Vector3(1, 1.2441406, 1)
+material = SubResource("StandardMaterial3D_2cqfq")
+
+[node name="Cover" type="CSGBox3D" parent="."]
+transform = Transform3D(0.38911843, 0, 0, 0, 0.4567294, 0, 0, 0, 0.49759132, 0, 1.6868404, 0.045420673)
+size = Vector3(1, 1, 0.6870117)
+material = SubResource("StandardMaterial3D_is4pb")
+
+[node name="Cover2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.38911816, 0, 0, 0, 0.4567294, 0, 0, 0, 0.49759105, 0, 2.117532, 0.04554651)
+size = Vector3(1, 1, 0.6870117)
+material = ExtResource("2_is4pb")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Cover2"]
+transform = Transform3D(0.612, 0, 0, 0, 0.612, 0, 0, 0, 0.47499973, 0.014784469, 0, 0.2550412)
+operation = 2
+radius = 0.12841797
+height = 1.82
+sides = 17
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.9999901, 0, 0, 0, 0.99999934, 0, 0, 0, 0.9999901, -0.0013433091, 1.9217758, 0.034424245)
+shape = SubResource("BoxShape3D_is4pb")
+
+[node name="Needle" type="CSGBox3D" parent="."]
+transform = Transform3D(0.99997425, 0, 0, 0, 0.99999934, 0, 0, 0, 0.99997425, 0.0067017935, 1.9152788, 0.2044617)
+size = Vector3(0.050231934, 1, 0.01524353)
+material = SubResource("StandardMaterial3D_sq52x")
+
+[node name="Needle2" type="CSGBox3D" parent="Needle"]
+transform = Transform3D(-4.371216e-08, 0, 1.000013, 0, 1.000013, 0, -1.000013, 0, -4.371216e-08, -0.00061544776, 0, -0.0040206164)
+size = Vector3(0.016830444, 1, 0.0020599365)
+material = SubResource("StandardMaterial3D_sq52x")

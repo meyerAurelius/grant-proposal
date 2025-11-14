@@ -1,14 +1,14 @@
 extends MeshInstance3D
-@onready var machineBase = get_node("../Mesh/Machine Base")
+@onready var machineBase = get_node("../Viscometer/Machine Base")
 
-var pos = Vector3(-0.135,1.774,-0.225)
-var machinePos = Vector3(-0.289,0.64, 0.012)
-var posUp = Vector3(-0.135,2.15,-0.225)
+var pos = Vector3(-0.012,1.874,0.367)
+var machinePos = Vector3(-0.289,0.64, -0.07)
+var posUp = Vector3(-0.012,2.25,0.367)
 
 var tween = create_tween()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://dw2sl0kxw73rw"]
+
+[ext_resource type="Script" uid="uid://vbcpw2ur0nn1" path="res://control_menu/exit_angle_view.gd" id="1_8ocgg"]
+[ext_resource type="Texture2D" uid="uid://c5nhabmcxmaxb" path="res://control_menu/x.png" id="1_ubl6u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ocgg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kmrnf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4iia2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0bxcq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5o761"]
+
+[node name="ExitAngleView" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_8ocgg")
+
+[node name="CloseButton" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1661.0
+offset_top = 98.0
+offset_right = 1821.0
+offset_bottom = 258.0
+mouse_filter = 2
+texture = ExtResource("1_ubl6u")
+
+[node name="Button" type="Button" parent="CloseButton"]
+layout_mode = 0
+offset_left = -4.0
+offset_right = 165.0
+offset_bottom = 165.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8ocgg")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_kmrnf")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4iia2")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_0bxcq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5o761")
+
+[connection signal="pressed" from="CloseButton/Button" to="." method="_on_button_pressed"]

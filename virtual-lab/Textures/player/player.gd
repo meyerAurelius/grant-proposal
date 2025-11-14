@@ -509,8 +509,8 @@ func _handle_raycast_interact(event : InputEvent = null):
 					print(camera_posOG)
 					camera_rotOG = $Head/Camera.global_rotation
 					tween = create_tween()
-					tween.parallel().tween_property($Head/Camera, "global_position", Vector3(0.336,1.903,1.07), 1)
-					tween.parallel().tween_property($Head/Camera, "global_rotation", Vector3(0,0,0), 0.75)
+					tween.parallel().tween_property($Head/Camera, "global_position", Vector3(.936,1.703,0.4), 1)
+					tween.parallel().tween_property($Head/Camera, "global_rotation", Vector3(0,deg_to_rad(60),0), 0.75)
 				
 				
 				if(collider.name == "PullStick"):
@@ -527,22 +527,51 @@ func _handle_raycast_interact(event : InputEvent = null):
 					tween.parallel().tween_property($Head/Camera, "global_position", Vector3(0.02,2.891,0.718), 1)
 					tween.parallel().tween_property($Head/Camera, "global_rotation", Vector3(0,0,0), 0.75)
 
+				if(collider.name == "Thermometer"):
+					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+					# $'../CanvasLayer/PullStick'.visible = true
+					tween = create_tween()
+					enter_stop_state()
+					camera_posOG = $Head/Camera.global_position
+					print(camera_posOG)
+					camera_rotOG = $Head/Camera.global_rotation
+					tween = create_tween()
+					tween.parallel().tween_property($Head/Camera, "global_position", Vector3(0.198,2.237,0.5), 1)
+					tween.parallel().tween_property($Head/Camera, "global_rotation", Vector3(deg_to_rad(-90),0,0), 0.75)
+				
 				if(collider.name == "BentoniteSlurry"):
+					Globals.viscosity_factor = 1.1 # slightly more viscous than water, probably, idk
 					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 					selectedFluid = 1
 					$'../CanvasLayer/FluidSelectionMenu'.visible = true
 					
 				
 				if(collider.name == "Ketchup"):
+					Globals.viscosity_factor = 1.5 # way more viscous than water
 					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 					selectedFluid = 2
 					$'../CanvasLayer/FluidSelectionMenu'.visible = true
 				
 				if(collider.name == "Water"):
+					Globals.viscosity_factor = 1.0 # water is water
 					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 					selectedFluid = 3
 					$'../CanvasLayer/FluidSelectionMenu'.visible = true
 					# now that the cursor is release we will display an rpm selection menu.
+					
+				if(collider.name == "AngleReading"):
+					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+					$'../CanvasLayer/ExitAngleView'.visible = true
+
+					tween = create_tween()
+					enter_stop_state()
+					camera_posOG = $Head/Camera.global_position
+					print(camera_posOG)
+					camera_rotOG = $Head/Camera.global_rotation
+					tween = create_tween()
+					tween.parallel().tween_property($Head/Camera, "global_position", Vector3(0.05,3.05,0.518), 1)
+					tween.parallel().tween_property($Head/Camera, "global_rotation", Vector3(-deg_to_rad(85),0,0), 0.75)
 					
 				
 			
